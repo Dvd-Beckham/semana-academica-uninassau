@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6ª Semana Acadêmica UNINASSAU — Inscrição e Programação</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- [EDITAR MANUALMENTE]: Se o seu style.css estiver dentro da pasta /css, mantenha a 2ª linha. Se estiver na mesma pasta do index.html, mantenha a 1ª. -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGAÇÃO SUPERIOR (NAVBAR)
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-uninassau">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <!-- [EDITAR MANUALMENTE]: Substitua o src abaixo pelo caminho da Logo Oficial recortada (ex: img/logo.png) -->
+        <img src="https://placehold.co/120x40/072A6C/F5C400?text=6a+JORNADA" alt="Logo 6ª Semana Acadêmica" />
+        <div>
+          6ª SEMANA ACADÊMICA
+          <!-- [EDITAR MANUALMENTE]: Altere a data exibida abaixo do título da logo -->
+          <span class="brand-subtitle">8 A 11 DE DEZEMBRO DE 2026</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacao">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end align-items-center" id="menuNavegacao">
+        <ul class="navbar-nav me-lg-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#o-evento">O evento</a></li>
+          <li class="nav-item"><a class="nav-link" href="#eixos">Eixos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#programacao">Programação</a></li>
+          <li class="nav-item"><a class="nav-link" href="#duvidas">Dúvidas</a></li>
+          <li class="nav-item"><a class="nav-link" href="professor.html">Credenciamento</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="consulta-certificado.html">Certificados</a></li>
+        </ul>
+        <a href="#inscricao" class="btn-cta-yellow">INSCREVA-SE</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       HERO SECTION (CAPA AZUL MARINHO COM GRADE ARQUITETÔNICA)
+       ======================================================================== -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <!-- Coluna Esquerda: Título e Chamada -->
+        <div class="col-lg-7">
+          <!-- [EDITAR MANUALMENTE]: Data e Cidade do Evento -->
+          <div class="hero-eyebrow">6ª EDIÇÃO · 8 A 11 DE DEZEMBRO DE 2026 · TERESINA/PI</div>
+
+          <h1 class="hero-title">
+            SEMANA<br />
+            ACADÊMICA
+            <span class="highlight-yellow">UNINASSAU</span>
+          </h1>
+
+          <!-- [EDITAR MANUALMENTE]: Texto de apresentação principal -->
+          <p class="hero-description">
+            Quatro dias de conhecimento aplicado: conferências, oficinas e apresentações de trabalhos que conectam a academia ao que acontece em Teresina e no Piauí.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#inscricao" class="btn-cta-yellow">FAZER MINHA INSCRIÇÃO</a>
+            <a href="#programacao" class="btn-outline-hero">VER PROGRAMAÇÃO</a>
+            <a href="consulta-certificado.html" class="btn-outline-hero">EMITIR CERTIFICADO</a>
+          </div>
+
+          <!-- Quadro de Destaques (4 Colunas) -->
+          <div class="hero-stats-grid">
+            <div class="hero-stat-item">
+              <div class="hero-stat-value">4</div>
+              <div class="hero-stat-label">DIAS DE PROGRAMAÇÃO</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-value">20h</div>
+              <div class="hero-stat-label">DE CERTIFICADO</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-value">6</div>
+              <div class="hero-stat-label">EIXOS TEMÁTICOS</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-value">100%</div>
+              <div class="hero-stat-label">INSCRIÇÃO GRATUITA</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Moldura da Foto do Auditório -->
+        <div class="col-lg-5">
+          <div class="hero-image-frame">
+            <!-- [EDITAR MANUALMENTE]: Troque a URL abaixo pela foto real do auditório da UNINASSAU -->
+            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1000&q=80" alt="Auditório UNINASSAU" />
+            <div class="hero-image-caption">
+              <span>LOCAL</span>
+              <!-- [EDITAR MANUALMENTE]: Nome do Campus -->
+              <strong>CAMPUS UNINASSAU TERESINA — PI</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Faixa Inferior com os Eixos Temáticos -->
+    <div class="hero-ticker-bar">
+      <ul class="hero-ticker-list">
+        <li>ENGENHARIAS E INFRAESTRUTURA</li>
+        <li>EDUCAÇÃO E EXTENSÃO</li>
+        <li>SAÚDE E CUIDADO</li>
+        <li>DIREITO E CIDADANIA</li>
+        <li>TECNOLOGIA E DADOS</li>
+        <li>GESTÃO E NEGÓCIOS</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SEÇÃO 01 — O EVENTO
+       ======================================================================== -->
+  <section id="o-evento" class="section-block">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="section-index-header">
+            <span class="index-num">01</span>
+            <span class="index-line"></span>
+            <span>O EVENTO</span>
+          </div>
+
+          <h2 class="section-title">Conhecimento que sai da sala de aula e chega ao território.</h2>
+
+          <!-- [EDITAR MANUALMENTE]: Descrição institucional do evento -->
+          <p class="mb-4">
+            A 6ª Semana Acadêmica da UNINASSAU reúne estudantes, professores e profissionais em dias intensivos de conferências, mesas-redondas, oficinas práticas e apresentação de trabalhos acadêmicos, organizados em seis eixos temáticos.
+          </p>
+
+          <ul class="feature-bullet-list">
+            <li>Credenciamento por QR Code único, com check-in rápido na entrada de cada sessão.</li>
+            <li>Certificado digital de 20 horas liberado mediante presença confirmada pelos monitores.</li>
+            <li>Oficinas práticas por área de conhecimento, com vagas limitadas.</li>
+            <li>Submissão e apresentação de trabalhos acadêmicos.</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="bg-white p-3 border" style="border-color: var(--border-light) !important;">
+            <!-- [EDITAR MANUALMENTE]: Foto secundária da Seção 01 -->
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=80" alt="Atividades Acadêmicas" class="img-fluid w-100" style="max-height: 320px; object-fit: cover;" />
+            <div class="p-3 bg-light border-top">
+              <span class="d-block small text-muted" style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;">CERTIFICAÇÃO OFICIAL</span>
+              <strong style="color: var(--uninassau-navy); font-size: 1.05rem;">Comprovante de 20 horas liberado após check-in presencial</strong>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-sm-6">
+              <div class="meta-accent-box">
+                <div class="meta-label">QUANDO</div>
+                <!-- [EDITAR MANUALMENTE]: Data e horário de início -->
+                <div class="meta-value">8 a 11 de dezembro de 2026</div>
+                <div class="small text-muted">A partir das 07h30</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="meta-accent-box">
+                <div class="meta-label">ONDE</div>
+                <!-- [EDITAR MANUALMENTE]: Endereço ou Campus -->
+                <div class="meta-value">Campus UNINASSAU Teresina — PI</div>
+                <div class="small text-muted">Credenciamento no hall principal e salas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SEÇÃO 02 — EIXOS TEMÁTICOS (FUNDO BRANCO PURO)
+       ======================================================================== -->
+  <section id="eixos" class="section-block bg-white-pure">
+    <div class="container">
+      <div class="row justify-content-between align-items-end">
+        <div class="col-lg-6">
+          <div class="section-index-header">
+            <span class="index-num">02</span>
+            <span class="index-line"></span>
+            <span>EIXOS TEMÁTICOS</span>
+          </div>
+          <h2 class="section-title mb-0">Seis trilhas, um só território de conhecimento.</h2>
+        </div>
+        <div class="col-lg-5 mt-3 mt-lg-0">
+          <p class="small text-muted mb-0">
+            Cada eixo reúne oficinas, mesas e trabalhos acadêmicos. A programação de cada trilha acontece em salas simultâneas.
+          </p>
+        </div>
+      </div>
+
+      <!-- [EDITAR MANUALMENTE]: Altere os títulos ou descrições dos 6 eixos se desejar -->
+      <div class="tracks-grid">
+        <div class="track-card">
+          <span class="track-number">01</span>
+          <h3 class="track-title">Saúde e Cuidado</h3>
+          <p class="track-desc">Práticas clínicas, saúde coletiva e o cuidado como compromisso com o território.</p>
+        </div>
+        <div class="track-card">
+          <span class="track-number">02</span>
+          <h3 class="track-title">Direito e Cidadania</h3>
+          <p class="track-desc">Direitos fundamentais, acesso à justiça e mediação de conflitos na vida real.</p>
+        </div>
+        <div class="track-card">
+          <span class="track-number">03</span>
+          <h3 class="track-title">Tecnologia e Dados</h3>
+          <p class="track-desc">Inteligência artificial, automação e o uso responsável de dados na pesquisa.</p>
+        </div>
+        <div class="track-card">
+          <span class="track-number">04</span>
+          <h3 class="track-title">Gestão e Negócios</h3>
+          <p class="track-desc">Empreendedorismo, mercado e gestão de organizações em cenários de mudança.</p>
+        </div>
+        <div class="track-card">
+          <span class="track-number">05</span>
+          <h3 class="track-title">Engenharias e Infraestrutura</h3>
+          <p class="track-desc">Projetos, cidade, energia e soluções de engenharia para o Piauí.</p>
+        </div>
+        <div class="track-card">
+          <span class="track-number">06</span>
+          <h3 class="track-title">Educação e Extensão</h3>
+          <p class="track-desc">Metodologias ativas, currículo e a extensão universitária como ponte comunitária.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SEÇÃO 03 — PROGRAMAÇÃO DINÂMICA (CONECTADA AO SUPABASE)
+       ======================================================================== -->
+  <section id="programacao" class="section-block">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3">
+        <div>
+          <div class="section-index-header">
+            <span class="index-num">03</span>
+            <span class="index-line"></span>
+            <span>PROGRAMAÇÃO</span>
+          </div>
+          <h2 class="section-title mb-0">4 dias de programação, a partir das 07h30.</h2>
+        </div>
+      </div>
+
+      <!-- Lista populada automaticamente a partir da tabela 'eventos' do Supabase -->
+      <div id="grade-programacao-publica" class="schedule-list">
+        <div class="py-4 text-muted small">Carregando programação oficial do banco de dados...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SEÇÃO 04 — INSCRIÇÃO E EMISSÃO DO QR CODE ÚNICO
+       ======================================================================== -->
+  <section id="inscricao" class="section-block">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <!-- Coluna Esquerda: Orientações de Credenciamento + Link para Certificado -->
+        <div class="col-lg-5">
+          <div class="section-index-header">
+            <span class="index-num">04</span>
+            <span class="index-line"></span>
+            <span>INSCRIÇÃO</span>
+          </div>
+          <h2 class="section-title">Garanta sua vaga nas sessões.</h2>
+          <p>
+            O credenciamento é feito a partir das 07h30. A inscrição é gratuita e pode ser feita até o preenchimento das vagas.
+          </p>
+
+          <ul class="feature-bullet-list">
+            <li>O check-in é feito pela organização no credenciamento de cada sessão, com a leitura do seu QR Code.</li>
+            <li>Basta registrar presença em pelo menos 1 atividade para liberar seu certificado de 20 horas.</li>
+            <li>Leve o QR Code recebido na inscrição (impresso ou no celular) e um documento oficial com foto.</li>
+            <li>A inscrição é individual e gratuita, sujeita à lotação das salas.</li>
+          </ul>
+
+          <!-- Caixa "JÁ SE INSCREVEU?" idêntica ao layout de referência apontando para consulta-certificado.html -->
+          <div class="bg-white p-3 border mt-4" style="border-color: var(--border-light) !important;">
+            <span class="d-block text-muted mb-1" style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;">
+              JÁ SE INSCREVEU?
+            </span>
+            <p class="small mb-0">
+              Seu certificado fica disponível na área <a href="consulta-certificado.html" class="fw-bold text-decoration-underline" style="color: var(--uninassau-navy);">Certificados</a> após o evento.
+            </p>
+          </div>
+
+          <!-- Card do Crachá Digital (Aparece automaticamente assim que o aluno se inscreve) -->
+          <div id="card-cracha-aluno" class="form-card-editorial text-center mt-4 d-none" style="border-top: 4px solid var(--uninassau-yellow);">
+            <span class="badge bg-success mb-2">CREDENCIAIS GERADAS COM SUCESSO</span>
+            <h3 id="cracha-nome" class="h5 fw-bold mb-1"></h3>
+            <p class="small text-muted mb-3">
+              Enviamos este QR Code para o seu e-mail! Você também pode tirar print desta tela para apresentar ao monitor:
+            </p>
+            <div class="d-flex justify-content-center my-2">
+              <img id="img-qr-unico" src="" alt="QR Code Único do Aluno" class="img-fluid border p-2" style="max-width: 210px;" />
+            </div>
+            <code id="codigo-token-texto" class="small text-muted d-block mt-2"></code>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Formulário Editorial Branco -->
+        <div class="col-lg-7">
+          <div class="form-card-editorial">
+            <div id="alerta-feedback" class="alert d-none small" role="alert"></div>
+
+            <form id="form-inscricao" novalidate>
+              <div class="mb-3">
+                <label class="form-label" for="nome">NOME COMPLETO</label>
+                <input type="text" id="nome" class="form-control" placeholder="Como aparece no documento" required minlength="5" />
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="email">E-MAIL</label>
+                  <input type="email" id="email" class="form-control" placeholder="seu@email.com" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="telefone">TELEFONE</label>
+                  <input type="text" id="telefone" class="form-control" placeholder="(86) 99999-9999" required />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="cpf">CPF</label>
+                  <input type="text" id="cpf" class="form-control" placeholder="000.000.000-00" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" for="matricula">MATRÍCULA</label>
+                  <input type="text" id="matricula" class="form-control" placeholder="Número da matrícula" required />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="curso">CURSO</label>
+                <!-- [EDITAR MANUALMENTE]: Adicione ou remova opções de cursos da UNINASSAU abaixo -->
+                <select id="curso" class="form-select" required>
+                  <option value="">Selecione seu curso</option>
+                  <option value="Ciência da Computação">Ciência da Computação</option>
+                  <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+                  <option value="Engenharia de Computação">Engenharia de Computação</option>
+                  <option value="Sistemas de Informação">Sistemas de Informação</option>
+                  <option value="Direito">Direito</option>
+                  <option value="Administração">Administração</option>
+                  <option value="Enfermagem">Enfermagem</option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">SELECIONE AS ATIVIDADES DE INTERESSE</label>
+                <div id="lista-eventos" class="list-group">
+                  <div class="text-muted small py-2">Carregando atividades do Supabase...</div>
+                </div>
+              </div>
+
+              <button type="submit" id="btn-salvar" class="btn-submit-navy">
+                CONFIRMAR INSCRIÇÃO
+              </button>
+
+              <p class="text-center text-muted small mt-3 mb-0" style="font-size: 0.75rem;">
+                Inscrição gratuita. Seus dados são usados apenas para credenciamento e emissão do certificado.
+              </p>
+            </form>
+          </div>
+          <div class="text-center mt-2" style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.08em;">
+            8 A 11 DE DEZEMBRO DE 2026 · CAMPUS UNINASSAU TERESINA — PI
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SEÇÃO 05 — PERGUNTAS FREQUENTES (DÚVIDAS)
+       ======================================================================== -->
+  <section id="duvidas" class="section-block">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="section-index-header">
+            <span class="index-num">05</span>
+            <span class="index-line"></span>
+            <span>DÚVIDAS</span>
+          </div>
+          <h2 class="section-title">Perguntas frequentes</h2>
+          <p class="small text-muted">
+            Se ficar alguma dúvida, procure a coordenação de extensão no campus.
+          </p>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                <span>Quem pode participar?</span>
+                <span>⌄</span>
+              </button>
+              <div id="faq1" class="collapse show faq-answer">
+                Estudantes regularmente matriculados na UNINASSAU, docentes, pesquisadores e comunidade externa inscrita pelo site oficial.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                <span>Como funciona o certificado?</span>
+                <span>⌄</span>
+              </button>
+              <div id="faq2" class="collapse faq-answer">
+                Basta ter pelo menos 1 presença confirmada pelo monitor de sala com o seu QR Code único para liberar o seu certificado institucional de 20 horas.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                <span>Onde encontro meu QR Code de acesso?</span>
+                <span>⌄</span>
+              </button>
+              <div id="faq3" class="collapse faq-answer">
+                Assim que você confirma sua inscrição no formulário acima, seu QR Code único é exibido imediatamente na tela e também enviado para o seu e-mail.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                <span>E se eu esquecer o QR Code no dia?</span>
+                <span>⌄</span>
+              </button>
+              <div id="faq4" class="collapse faq-answer">
+                O monitor de sala pode registrar sua presença manualmente informando o seu CPF mediante apresentação de um documento oficial com foto.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                <span>Como recebo ou baixo meu certificado?</span>
+                <span>⌄</span>
+              </button>
+              <div id="faq5" class="collapse faq-answer">
+                Acesse a página <a href="consulta-certificado.html" class="fw-bold text-decoration-underline" style="color: var(--uninassau-navy);">Certificados</a> no menu superior, digite seu CPF e e-mail cadastrados para visualizar seu diploma na tela e baixar o PDF.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SEÇÃO 06 — BANNER CTA PRÉ-RODAPÉ E RODAPÉ INSTITUCIONAL
+       ======================================================================== -->
+  <section class="cta-banner-section">
+    <div class="container">
+      <div class="row align-items-center justify-content-between g-4">
+        <div class="col-lg-7">
+          <div class="hero-eyebrow mb-2">VAGAS LIMITADAS</div>
+          <!-- [EDITAR MANUALMENTE]: Frase de impacto do banner final -->
+          <h2 class="text-white fw-bold mb-2" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">
+            A academia encontra o território em 8 a 11 de dezembro de 2026.
+          </h2>
+          <p class="text-white-50 small mb-0">Campus UNINASSAU Teresina — PI · Credenciamento a partir das 07h30</p>
+        </div>
+        <div class="col-lg-auto">
+          <a href="#inscricao" class="btn-cta-yellow">INSCREVER AGORA</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-uninassau">
+    <div class="container">
+      <div class="row g-4 justify-content-between">
+        <div class="col-lg-5">
+          <div class="small text-warning fw-bold mb-1" style="font-family: var(--font-mono);">6ª EDIÇÃO</div>
+          <h3 class="h4 text-white fw-bold mb-2">SEMANA ACADÊMICA UNINASSAU</h3>
+          <p class="small text-white-50 mb-0" style="max-width: 360px;">
+            Ensino, pesquisa, extensão e inovação. Programação acadêmica em Teresina, Piauí.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div class="footer-heading">NAVEGAÇÃO</div>
+          <ul>
+            <li><a href="#o-evento">O evento</a></li>
+            <li><a href="#programacao">Programação</a></li>
+            <li><a href="#inscricao">Inscrição</a></li>
+            <li><a href="consulta-certificado.html">Certificados</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div class="footer-heading">ORGANIZAÇÃO</div>
+          <ul>
+            <li>Coordenação de Extensão · UNINASSAU Teresina</li>
+            <li>Campus UNINASSAU Teresina — PI</li>
+            <li>8 a 11 de dezembro de 2026</li>
+            <li class="mt-2"><a href="professor.html" class="text-warning text-decoration-underline">Painel da organização</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 UNINASSAU · TERESINA — PI</span>
+        <span>EVENTO ACADÊMICO INSTITUCIONAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dependências JS: Bootstrap + Supabase + IMask + EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/imask"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/supabaseClient.js"></script>
+
+  <script>
+    // 1. Aplica Máscaras nos Campos do Formulário
+    IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
+    IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
+    IMask(document.getElementById('matricula'), { mask: '0000000000' });
+
+    // 2. Validação Matemática de CPF
+    function validarCPF(cpfComMascara) {
+      const cpf = cpfComMascara.replace(/\D/g, '');
+      if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+      let soma = 0, resto;
+      for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      if (resto !== parseInt(cpf.substring(9, 10))) return false;
+      soma = 0;
+      for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      return resto === parseInt(cpf.substring(10, 11));
+    }
+
+    function exibirAlerta(mensagem, tipo = 'danger') {
+      const alerta = document.getElementById('alerta-feedback');
+      alerta.className = `alert alert-${tipo} small`;
+      alerta.textContent = mensagem;
+      alerta.classList.remove('d-none');
+      alerta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // 3. Carrega Programação na Seção 03 e Checkboxes na Seção 04
+    async function carregarEventos() {
+      const containerCheckboxes = document.getElementById('lista-eventos');
+      const containerGrade = document.getElementById('grade-programacao-publica');
+
+      const { data: eventos, error } = await db
+        .from('eventos')
+        .select('id, titulo, responsavel, data_evento')
+        .order('data_evento', { ascending: true });
+
+      if (error || !eventos || eventos.length === 0) {
+        containerCheckboxes.innerHTML = '<div class="alert alert-warning mb-0 small">Nenhuma atividade cadastrada ainda.</div>';
+        containerGrade.innerHTML = '<div class="py-3 text-muted small">Nenhuma atividade publicada no momento.</div>';
+        return;
+      }
+
+      // Renderiza linhas da Seção 03 (Programação estilo Editorial)
+      containerGrade.innerHTML = eventos.map((ev, idx) => {
+        const dt = new Date(ev.data_evento);
+        const horaFmt = dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        const dataFmt = dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+        const numOrdem = String(idx + 1).padStart(2, '0');
+        return `
+          <div class="schedule-row">
+            <div class="schedule-time">${horaFmt} <span class="d-block small text-muted fw-normal" style="font-size:0.7rem;">${dataFmt}</span></div>
+            <div>
+              <div class="schedule-activity-title">${ev.titulo}</div>
+              <div class="schedule-activity-location">Prof(a). ${ev.responsavel} · Auditório / Salas</div>
+            </div>
+            <div class="schedule-tag">ATIVIDADE OFICIAL</div>
+            <div class="schedule-tag text-end">${numOrdem}</div>
+          </div>
+        `;
+      }).join('');
+
+      // Renderiza Checkboxes dentro do Formulário de Inscrição (Seção 04)
+      containerCheckboxes.innerHTML = eventos.map(ev => {
+        const dataFmt = new Date(ev.data_evento).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+        return `
+          <label class="list-group-item d-flex justify-content-between align-items-center small">
+            <div>
+              <input class="form-check-input me-2 checkbox-evento" type="checkbox" value="${ev.id}" checked />
+              <strong style="color: var(--uninassau-navy);">${ev.titulo}</strong>
+              <div class="text-muted" style="font-size: 0.78rem;">${ev.responsavel} • ${dataFmt}</div>
+            </div>
+          </label>
+        `;
+      }).join('');
+    }
+
+    // 4. Função de envio atualizada para EmailJS v4 com diagnóstico de erro na tela
+    async function enviarEmailComQRCode(nome, email, qrUrlImagem, qrToken) {
+      const EMAILJS_PUBLIC_KEY = 'D5JE-mFhl2ABM90KV';
+      const EMAILJS_SERVICE_ID = 'service_gpcqppr';
+      const EMAILJS_TEMPLATE_ID = 'template_drlvwqh';
+
+      if (EMAILJS_PUBLIC_KEY === 'COLE_SUA_PUBLIC_KEY_AQUI' || EMAILJS_PUBLIC_KEY === 'SUA_PUBLIC_KEY_AQUI') {
+        alert('Atenção: Você ainda não colou suas chaves do EmailJS no index.html!');
+        return;
+      }
+
+      try {
+        const resposta = await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            to_name: nome,
+            to_email: email,
+            qr_code_url: qrUrlImagem,
+            qr_token: qrToken
+          },
+          {
+            publicKey: EMAILJS_PUBLIC_KEY
+          }
+        );
+        console.log('E-mail disparado com sucesso pelo EmailJS!', resposta.status, resposta.text);
+      } catch (erroEmail) {
+        console.error('Falha detalhada do EmailJS:', erroEmail);
+        alert('Erro no EmailJS: ' + (erroEmail?.text || erroEmail?.message || JSON.stringify(erroEmail)));
+      }
+    }
+
+    // 5. Submissão da Inscrição
+    document.getElementById('form-inscricao').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('btn-salvar');
+
+      const nome = document.getElementById('nome').value.trim();
+      const cpf = document.getElementById('cpf').value.trim();
+      const matricula = document.getElementById('matricula').value.trim();
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const telefone = document.getElementById('telefone').value.trim();
+      const curso = document.getElementById('curso').value;
+      const eventosSelecionados = Array.from(document.querySelectorAll('.checkbox-evento:checked')).map(cb => cb.value);
+
+      if (!validarCPF(cpf)) return exibirAlerta('CPF inválido! Verifique os dígitos informados.');
+      if (telefone.length < 14) return exibirAlerta('Digite um telefone válido com DDD.');
+      if (!curso) return exibirAlerta('Selecione o seu curso.');
+
+      btn.disabled = true;
+      btn.textContent = 'GERANDO CREDENCIAL E QR CODE...';
+
+      try {
+        const { data: res, error } = await db.rpc('cadastrar_aluno_seguro', {
+          p_nome: nome,
+          p_cpf: cpf,
+          p_matricula: matricula,
+          p_email: email,
+          p_telefone: telefone,
+          p_curso: curso,
+          p_eventos: eventosSelecionados
+        });
+
+        if (error) throw error;
+        if (!res.sucesso) throw new Error(res.erro);
+
+        // O QR Code aponta para a área restrita do monitor para evitar que o próprio aluno valide sua presença
+        const linkVerificacaoMonitor = `${window.location.origin}/professor.html?qr=${res.qr_token}`;
+        const urlImagemQR = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(linkVerificacaoMonitor)}`;
+
+        document.getElementById('cracha-nome').textContent = res.nome;
+        document.getElementById('img-qr-unico').src = urlImagemQR;
+        document.getElementById('codigo-token-texto').textContent = `Token: ${res.qr_token}`;
+        document.getElementById('card-cracha-aluno').classList.remove('d-none');
+
+        await enviarEmailComQRCode(res.nome, res.email, urlImagemQR, res.qr_token);
+
+        exibirAlerta(`Inscrição confirmada, ${res.nome}! Seu QR Code único foi gerado ao lado e enviado para ${res.email}.`, 'success');
+        document.getElementById('form-inscricao').reset();
+      } catch (err) {
+        exibirAlerta(err.message || 'Erro ao realizar inscrição.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'CONFIRMAR INSCRIÇÃO';
+      }
+    });
+
+    carregarEventos();
+  </script>
+</body>
+</html>

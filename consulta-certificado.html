@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consultar e Baixar Certificado — 6ª Semana Acadêmica UNINASSAU</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- [EDITAR MANUALMENTE]: Compatível com style.css na raiz ou na subpasta /css -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Moldura de pré-visualização do certificado na tela */
+    .certificate-preview-wrapper {
+      background-color: var(--uninassau-navy-dark);
+      border: 1px solid var(--border-light);
+      padding: 1.25rem;
+      border-radius: var(--radius-sharp);
+      box-shadow: var(--shadow-card);
+    }
+    #canvas-preview-certificado {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+      background-color: #ffffff;
+    }
+    .status-badge-aprovado {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background-color: #E6F4EA;
+      color: #137333;
+      border: 1px solid #CEEAD6;
+      padding: 0.4rem 0.75rem;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGAÇÃO SUPERIOR (NAVBAR)
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-uninassau">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <!-- [EDITAR MANUALMENTE]: Caminho da Logo Oficial -->
+        <img src="https://placehold.co/120x40/072A6C/F5C400?text=6a+JORNADA" alt="Logo 6ª Semana Acadêmica" />
+        <div>
+          6ª SEMANA ACADÊMICA
+          <span class="brand-subtitle">EMISSÃO DE CERTIFICADOS</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuCert">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end align-items-center" id="menuCert">
+        <ul class="navbar-nav me-lg-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html#o-evento">O evento</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#programacao">Programação</a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold" href="consulta-certificado.html">Certificados</a></li>
+          <li class="nav-item"><a class="nav-link" href="professor.html">Credenciamento (Monitor)</a></li>
+        </ul>
+        <a href="index.html#inscricao" class="btn-cta-yellow">INSCREVA-SE</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       SEÇÃO PRINCIPAL DE CONSULTA E EXIBIÇÃO DO CERTIFICADO
+       ======================================================================== -->
+  <main class="section-block">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+
+        <!-- Coluna 1: Formulário de Consulta por CPF e E-mail -->
+        <div class="col-lg-5">
+          <div class="section-index-header">
+            <span class="index-num">CERT</span>
+            <span class="index-line"></span>
+            <span>CONSULTA PÚBLICA</span>
+          </div>
+
+          <h1 class="section-title">Emita seu certificado oficial.</h1>
+          <p class="mb-4">
+            Informe o CPF e o e-mail utilizados no ato da inscrição. O certificado fica disponível imediatamente na tela e para download em PDF para todos os participantes com presença confirmada.
+          </p>
+
+          <div class="form-card-editorial">
+            <div id="mensagem" class="alert d-none small" role="status"></div>
+
+            <form id="form-consulta-certificado" novalidate>
+              <div class="mb-3">
+                <label class="form-label" for="cpf">CPF UTILIZADO NA INSCRIÇÃO</label>
+                <input
+                  type="text"
+                  id="cpf"
+                  class="form-control"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  placeholder="000.000.000-00"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label" for="email">E-MAIL CADASTRADO</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  autocomplete="off"
+                  placeholder="voce@exemplo.com"
+                  required
+                />
+              </div>
+
+              <button type="submit" id="consultar" class="btn-submit-navy">
+                CONSULTAR CERTIFICADO
+              </button>
+            </form>
+          </div>
+
+          <ul class="feature-bullet-list mt-4 mb-0">
+            <li>A validação consulta diretamente as presenças registradas pelos monitores de sala.</li>
+            <li>O documento é gerado em alta resolução com a fonte institucional Poppins Bold.</li>
+          </ul>
+        </div>
+
+        <!-- Coluna 2: Visualização do Certificado na Tela + Botão de Download -->
+        <div class="col-lg-7">
+          <!-- Estado Inicial (Antes da consulta) -->
+          <div id="estado-aguardando" class="form-card-editorial text-center py-5">
+            <div class="section-index-header justify-content-center mb-2">
+              <span class="index-num">PDF</span>
+              <span class="index-line"></span>
+              <span>VISUALIZAÇÃO NA TELA</span>
+            </div>
+            <h2 class="h5 fw-bold mb-2">Aguardando dados para emissão</h2>
+            <p class="small text-muted mb-0" style="max-width: 420px; margin: 0 auto;">
+              Preencha seu CPF e e-mail ao lado e clique em <strong>Consultar Certificado</strong> para visualizar seu diploma na tela e liberar o download.
+            </p>
+          </div>
+
+          <!-- Estado Liberado (Exibe o Certificado na Tela + Botões de Ação) -->
+          <div id="painel-certificado-tela" class="d-none">
+            <div class="form-card-editorial mb-3">
+              <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                <div>
+                  <span class="status-badge-aprovado mb-1">✓ PARTICIPAÇÃO VALIDADA</span>
+                  <h2 id="nome-aluno-aprovado" class="h5 fw-bold mb-0 mt-1"></h2>
+                  <small id="detalhe-presencas" class="text-muted"></small>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2">
+                  <button type="button" id="baixar" class="btn-cta-yellow">
+                    ⬇ BAIXAR CERTIFICADO (PDF)
+                  </button>
+                  <button type="button" id="abrir-pdf-aba" class="btn btn-outline-secondary btn-sm fw-bold" style="border-radius: 2px;">
+                    ABRIR PDF EM NOVA ABA
+                  </button>
+                </div>
+              </div>
+
+              <!-- Pré-visualização interativa do Certificado diretamente na tela -->
+              <div class="certificate-preview-wrapper">
+                <canvas id="canvas-preview-certificado"></canvas>
+                <div class="d-flex justify-content-between align-items-center pt-2 text-white-50" style="font-family: var(--font-mono); font-size: 0.68rem;">
+                  <span>PRÉ-VISUALIZAÇÃO FIEL DO DOCUMENTO</span>
+                  <span>FORMATO OFICIAL A4 PAISAGEM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé Institucional -->
+  <footer class="footer-uninassau">
+    <div class="container">
+      <div class="footer-bottom-bar mt-0 pt-0 border-0">
+        <span>© 2026 UNINASSAU · TERESINA — PI</span>
+        <span>SISTEMA OFICIAL DE CERTIFICAÇÃO ACADÊMICA</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       ORDEM OBRIGATÓRIA DOS SCRIPTS (NÃO MODIFICAR):
+       1) jsPDF  2) IMask (máscara CPF)  3) certificado.js  4) consulta_certificado.js
+       ======================================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/imask"></script>
+  <script src="certificado.js"></script>
+  <script src="consulta_certificado.js"></script>
+
+  <script>
+    // 1. Aplica máscara de CPF no input (funciona em conjunto com cpfValido do consulta_certificado.js)
+    const inputCpf = document.getElementById('cpf');
+    IMask(inputCpf, { mask: '000.000.000-00' });
+
+    // 2. Formatação inteligente do Nome Próprio (preserva partículas da, de, do, dos, e)
+    const PARTICULAS = new Set(['da', 'de', 'do', 'das', 'dos', 'e']);
+    function formatarNome(nome) {
+      return nome.trim().replace(/\s+/g, ' ').toLowerCase().split(' ')
+        .map((p, i) => (i > 0 && PARTICULAS.has(p)) ? p : p.charAt(0).toUpperCase() + p.slice(1))
+        .join(' ');
+    }
+
+    const $ = (id) => document.getElementById(id);
+    let alunoLiberado = null;
+
+    function mostrarMensagem(texto, tipo = 'danger') {
+      const box = $('mensagem');
+      box.className = `alert alert-${tipo} small mb-3`;
+      box.textContent = texto;
+      box.classList.remove('d-none');
+    }
+
+    function limparEstado() {
+      alunoLiberado = null;
+      $('painel-certificado-tela').classList.add('d-none');
+      $('estado-aguardando').classList.remove('d-none');
+    }
+
+    // 3. Desenha a Pré-Visualização do Certificado direto na tela (Canvas HTML5)
+    //    usando exatamente o certificado.png e as coordenadas de NOME do certificado.js
+    async function renderizarCertificadoNaTela(nomeFormatado) {
+      const img = await carregarImagem(IMAGEM_FUNDO);
+      const canvas = $('canvas-preview-certificado');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      // Desenha o template oficial de fundo (certificado.png)
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // Carrega a fonte Poppins Bold embutida no certificado.js para a prévia ficar idêntica ao PDF
+      try {
+        if (typeof FONTE_POPPINS_BOLD !== 'undefined' && 'FontFace' in window) {
+          const fontBytes = Uint8Array.from(atob(FONTE_POPPINS_BOLD), c => c.charCodeAt(0));
+          const fontFace = new FontFace('PoppinsPreview', fontBytes);
+          await fontFace.load();
+          document.fonts.add(fontFace);
+        }
+      } catch (e) {
+        console.warn('Usando fonte de fallback na prévia em tela:', e);
+      }
+
+      // Aplica a mesma regra de redução proporcional de tamanho do criarPDF()
+      let tamanho = NOME.tamanho;
+      const familiaFonte = "'PoppinsPreview', 'Inter', sans-serif";
+      ctx.font = `bold ${tamanho}px ${familiaFonte}`;
+      while (ctx.measureText(nomeFormatado).width > canvas.width * NOME.larguraMax && tamanho > 14) {
+        tamanho -= 1;
+        ctx.font = `bold ${tamanho}px ${familiaFonte}`;
+      }
+
+      ctx.fillStyle = `rgb(${NOME.cor[0]}, ${NOME.cor[1]}, ${NOME.cor[2]})`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText(nomeFormatado, canvas.width * NOME.x, canvas.height * NOME.y);
+    }
+
+    if (typeof window.jspdf === 'undefined') {
+      mostrarMensagem('Erro: a biblioteca jsPDF não carregou. Verifique sua conexão e recarregue a página.', 'danger');
+    }
+
+    // Se o aluno alterar o CPF ou o e-mail digitado, esconde o certificado anterior até nova consulta
+    $('cpf').addEventListener('input', limparEstado);
+    $('email').addEventListener('input', limparEstado);
+
+    // 4. Submissão da Consulta (Conecta consulta_certificado.js + certificado.js)
+    $('form-consulta-certificado').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      limparEstado();
+      mostrarMensagem('Consultando base de presenças da 6ª Semana Acadêmica...', 'info');
+      $('consultar').disabled = true;
+      $('consultar').textContent = 'CONSULTANDO...';
+
+      try {
+        const r = await buscarAluno($('cpf').value, $('email').value);
+        if (!r.ok) {
+          mostrarMensagem(MENSAGENS[r.motivo] || MENSAGENS.ERRO_DE_CONSULTA, 'danger');
+          return;
+        }
+
+        alunoLiberado = { ...r.aluno, nome: formatarNome(r.aluno.nome) };
+
+        // Renderiza o certificado ao vivo na tela (Canvas)
+        await renderizarCertificadoNaTela(alunoLiberado.nome);
+
+        $('nome-aluno-aprovado').textContent = alunoLiberado.nome;
+        $('detalhe-presencas').textContent =
+          `${alunoLiberado.presencas} presença(s) confirmada(s) · Certificado de 20 horas liberado`;
+
+        $('estado-aguardando').classList.add('d-none');
+        $('painel-certificado-tela').classList.remove('d-none');
+        mostrarMensagem('Certificado localizado e disponibilizado abaixo para visualização e download!', 'success');
+      } catch (erro) {
+        mostrarMensagem(erro.message || MENSAGENS.ERRO_DE_CONSULTA, 'danger');
+      } finally {
+        $('consultar').disabled = false;
+        $('consultar').textContent = 'CONSULTAR CERTIFICADO';
+      }
+    });
+
+    // 5. Botão de Download Direto (chama gerarCertificado do certificado.js)
+    $('baixar').addEventListener('click', async () => {
+      if (!alunoLiberado) return;
+      $('baixar').disabled = true;
+      try {
+        await gerarCertificado(alunoLiberado);
+      } finally {
+        $('baixar').disabled = false;
+      }
+    });
+
+    // 6. Botão para Abrir o PDF Nativo em Nova Aba (usa criarPDF do certificado.js)
+    $('abrir-pdf-aba').addEventListener('click', async () => {
+      if (!alunoLiberado) return;
+      const pdf = await criarPDF(alunoLiberado.nome);
+      const blobUrl = pdf.output('bloburl');
+      window.open(blobUrl, '_blank');
+    });
+  </script>
+</body>
+</html>
