@@ -9,6 +9,7 @@
    2. Máscara de E-MAIL         -> sem espaços, sempre em minúsculas
    3. Validação em tempo real (Bootstrap .is-valid / .is-invalid + mensagens)
       para Nome, E-mail, Telefone, CPF, Matrícula e Curso
+      (Matrícula e Curso só são exigidos quando a caixa "Sou aluno" está marcada)
    4. Campo "honeypot" invisível contra robôs de spam
    5. Bloqueio do envio enquanto houver campo inválido (rola até o 1º erro)
 
@@ -31,6 +32,20 @@
   };
 
   const somenteDigitos = (v) => String(v).replace(/\D/g, '');
+
+  // Matrícula e Curso só valem para quem marcou "Sou aluno"
+  const chkAluno = $('check-aluno');
+  const ehAluno = () => !!(chkAluno && chkAluno.checked);
+  const SO_ALUNO = ['matricula', 'curso'];
+
+  function limparEstado(campo) {
+    campo.classList.remove('is-valid', 'is-invalid');
+    campo.removeAttribute('aria-invalid');
+    campo.setCustomValidity('');
+    delete campo.dataset.tocado;
+    const fb = campo.parentElement.querySelector('.invalid-feedback[data-blindagem]');
+    if (fb) fb.textContent = '';
+  }
 
   // ------------------------------------------------------------------------
   // Regras de validação (cada uma devolve '' se OK ou a mensagem de erro)
@@ -104,6 +119,13 @@
   function validarCampo(nome, mostrarSeVazio) {
     const campo = campos[nome];
     if (!campo) return true;
+
+    // Sem "Sou aluno" marcado, matrícula e curso não são obrigatórios
+    if (SO_ALUNO.includes(nome) && !ehAluno()) {
+      limparEstado(campo);
+      return true;
+    }
+
     const erro = REGRAS[nome](campo.value);
     const vazio = campo.value.trim() === '';
 
@@ -180,6 +202,13 @@
     campo.addEventListener('input', () => { if (campo.dataset.tocado) validarCampo(nome, true); });
     campo.addEventListener('change', () => { campo.dataset.tocado = '1'; validarCampo(nome, true); });
   });
+
+  // Ao desmarcar "Sou aluno", apaga qualquer erro/aviso de matrícula e curso
+  if (chkAluno) {
+    chkAluno.addEventListener('change', () => {
+      if (!ehAluno()) SO_ALUNO.forEach((nome) => limparEstado(campos[nome]));
+    });
+  }
 
   // ------------------------------------------------------------------------
   // Honeypot: campo invisível que pessoas não veem, mas robôs preenchem

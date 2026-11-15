@@ -3,43 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6ª Semana Acadêmica UNINASSAU — Inscrição e Programação</title>
+  <title>6ª Jornada Acadêmica da Uninassau Teresina — Inscrição de Trabalhos e Programação</title>
+  <meta name="description" content="6ª Jornada Acadêmica da Uninassau Teresina, 09 e 10 de dezembro de 2026. Tema: Conhecimento que conecta pessoas e transforma realidades. Inscrição gratuita de trabalhos de 16 a 30 de novembro." />
+  <meta name="theme-color" content="#072A6C" />
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- [EDITAR MANUALMENTE]: Se o seu style.css estiver dentro da pasta /css, mantenha a 2ª linha. Se estiver na mesma pasta do index.html, mantenha a 1ª. -->
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png?v=1" />
 </head>
 <body>
 
   <!-- ========================================================================
        BARRA DE NAVEGAÇÃO SUPERIOR (NAVBAR)
+       Usa navbar-expand-xl: o menu em linha só aparece a partir de 1200px,
+       evitando que os links se espremam em tablets e notebooks pequenos.
        ======================================================================== -->
-  <nav class="navbar navbar-expand-lg navbar-uninassau">
+  <nav class="navbar navbar-expand-xl navbar-uninassau">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <!-- [EDITAR MANUALMENTE]: Substitua o src abaixo pelo caminho da Logo Oficial recortada (ex: img/logo.png) -->
-        <img src="assets/img/logo-jornada-nav.png" alt="Logo 6ª Semana Acadêmica" />
+        <img src="assets/img/logo-jornada-nav.png" alt="Logo da 6ª Jornada Acadêmica Uninassau Teresina" />
         <div>
-          6ª SEMANA ACADÊMICA
-          <!-- [EDITAR MANUALMENTE]: Altere a data exibida abaixo do título da logo -->
-          <span class="brand-subtitle">8 A 11 DE DEZEMBRO DE 2026</span>
+          6ª JORNADA ACADÊMICA
+          <span class="brand-subtitle">09 E 10 DE DEZEMBRO DE 2026</span>
         </div>
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacao">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacao"
+              aria-controls="menuNavegacao" aria-expanded="false" aria-label="Abrir menu de navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse justify-content-end align-items-center" id="menuNavegacao">
-        <ul class="navbar-nav me-lg-3 mb-2 mb-lg-0">
+        <ul class="navbar-nav me-xl-3 mb-2 mb-xl-0">
           <li class="nav-item"><a class="nav-link" href="#o-evento">O evento</a></li>
-          <li class="nav-item"><a class="nav-link" href="#eixos">Eixos</a></li>
           <li class="nav-item"><a class="nav-link" href="#programacao">Programação</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cronograma">Cronograma</a></li>
           <li class="nav-item"><a class="nav-link" href="#duvidas">Dúvidas</a></li>
           <li class="nav-item"><a class="nav-link" href="professor.html">Credenciamento</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="consulta-certificado.html">Certificados</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="certificado-js\web\consulta-certificado.html">Certificados</a></li>
         </ul>
         <a href="#inscricao" class="btn-cta-yellow">INSCREVA-SE</a>
       </div>
@@ -54,39 +55,47 @@
       <div class="row align-items-center g-5">
         <!-- Coluna Esquerda: Título e Chamada -->
         <div class="col-lg-7">
-          <!-- [EDITAR MANUALMENTE]: Data e Cidade do Evento -->
-          <div class="hero-eyebrow">6ª EDIÇÃO · 8 A 11 DE DEZEMBRO DE 2026 · TERESINA/PI</div>
+          <div class="hero-eyebrow">6ª EDIÇÃO · 09 E 10 DE DEZEMBRO DE 2026 · TERESINA/PI</div>
 
           <h1 class="hero-title">
-            SEMANA<br />
+            6ª JORNADA<br />
             ACADÊMICA
-            <span class="highlight-yellow">UNINASSAU</span>
+            <span class="highlight-yellow">UNINASSAU TERESINA</span>
           </h1>
 
-          <!-- [EDITAR MANUALMENTE]: Texto de apresentação principal -->
+          <!-- Tema oficial da Jornada (edital) -->
+          <p class="hero-theme">“Conhecimento que conecta pessoas e transforma realidades”</p>
+
           <p class="hero-description">
-            Quatro dias de conhecimento aplicado: conferências, oficinas e apresentações de trabalhos que conectam a academia ao que acontece em Teresina e no Piauí.
+            Dois dias de ciência, extensão e troca de experiências: apresentações de trabalhos que aproximam a academia da sociedade.
           </p>
 
-          <div class="d-flex flex-wrap gap-3">
+
+          <div class="hero-actions d-flex flex-wrap gap-3">
             <a href="#inscricao" class="btn-cta-yellow">FAZER MINHA INSCRIÇÃO</a>
             <a href="#programacao" class="btn-outline-hero">VER PROGRAMAÇÃO</a>
-            <a href="consulta-certificado.html" class="btn-outline-hero">EMITIR CERTIFICADO</a>
+            <a href="certificado-js\web\consulta-certificado.html" class="btn-outline-hero">EMITIR CERTIFICADO</a>
           </div>
+
+          <!-- Rede social oficial do evento -->
+          <a class="hero-social" href="https://www.instagram.com/vi_jornadaacademicauninassau/" target="_blank" rel="noopener noreferrer">
+            <svg class="ig-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <span>Acompanhe as novidades: <strong>@vi_jornadaacademicauninassau</strong></span>
+          </a>
 
           <!-- Quadro de Destaques (4 Colunas) -->
           <div class="hero-stats-grid">
             <div class="hero-stat-item">
-              <div class="hero-stat-value">4</div>
-              <div class="hero-stat-label">DIAS DE PROGRAMAÇÃO</div>
+              <div class="hero-stat-value">2</div>
+              <div class="hero-stat-label">DIAS DE EVENTO</div>
             </div>
             <div class="hero-stat-item">
-              <div class="hero-stat-value">20h</div>
-              <div class="hero-stat-label">DE CERTIFICADO</div>
+              <div class="hero-stat-value">10<small>min</small></div>
+              <div class="hero-stat-label">POR APRESENTAÇÃO</div>
             </div>
             <div class="hero-stat-item">
-              <div class="hero-stat-value">6</div>
-              <div class="hero-stat-label">EIXOS TEMÁTICOS</div>
+              <div class="hero-stat-value">2</div>
+              <div class="hero-stat-label">FORMATOS: BANNER E ORAL</div>
             </div>
             <div class="hero-stat-item">
               <div class="hero-stat-value">100%</div>
@@ -95,36 +104,33 @@
           </div>
         </div>
 
-        <!-- Coluna Direita: Moldura da Foto do Auditório -->
+        <!-- Coluna Direita: Moldura da Foto -->
         <div class="col-lg-5">
           <div class="hero-image-frame">
-            <!-- [EDITAR MANUALMENTE]: Troque a URL abaixo pela foto real do auditório da UNINASSAU -->
-            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1000&q=80" alt="Auditório UNINASSAU" />
+            <img src="assets/img/uninassau-fachada-hd.jpeg" alt="Auditório da Uninassau Teresina" />
             <div class="hero-image-caption">
               <span>LOCAL</span>
-              <!-- [EDITAR MANUALMENTE]: Nome do Campus -->
-              <strong>CAMPUS UNINASSAU TERESINA — PI</strong>
+              <strong>UNINASSAU TERESINA — PI</strong>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Faixa Inferior com os Eixos Temáticos -->
+    <!-- Faixa inferior com os avisos principais (substitui a antiga faixa de eixos) -->
     <div class="hero-ticker-bar">
       <ul class="hero-ticker-list">
-        <li>ENGENHARIAS E INFRAESTRUTURA</li>
-        <li>EDUCAÇÃO E EXTENSÃO</li>
-        <li>SAÚDE E CUIDADO</li>
-        <li>DIREITO E CIDADANIA</li>
-        <li>TECNOLOGIA E DADOS</li>
-        <li>GESTÃO E NEGÓCIOS</li>
+        <li>09 E 10 DE DEZEMBRO DE 2026</li>
+        <li>INSCRIÇÕES DE 16 A 30 DE NOVEMBRO</li>
+        <li>INSCRIÇÃO GRATUITA</li>
+        <li>DOE 1 KG DE ALIMENTO NÃO PERECÍVEL</li>
+        <li>UNINASSAU TERESINA — PI</li>
       </ul>
     </div>
   </section>
 
   <!-- ========================================================================
-       SEÇÃO 01 — O EVENTO
+       SEÇÃO 01 — O EVENTO (informações introdutórias do edital)
        ======================================================================== -->
   <section id="o-evento" class="section-block">
     <div class="container">
@@ -136,28 +142,31 @@
             <span>O EVENTO</span>
           </div>
 
-          <h2 class="section-title">Conhecimento que sai da sala de aula e chega ao território.</h2>
+          <h2 class="section-title">Um espaço para dar visibilidade à extensão e à pesquisa.</h2>
 
-          <!-- [EDITAR MANUALMENTE]: Descrição institucional do evento -->
+          <p>
+            A 6ª Jornada Acadêmica da Uninassau Teresina acontece nos dias 09 e 10 de dezembro de 2026, com o tema “Conhecimento que conecta pessoas e transforma realidades”.
+          </p>
+          <p>
+            A Jornada integra a estratégia de ampliação das atividades acadêmicas internas e externas da Uninassau Teresina, com o objetivo de ampliar e intensificar a inserção da instituição na comunidade científica local e elevar o padrão da formação acadêmica, em total ligação com a sociedade.
+          </p>
           <p class="mb-4">
-            A 6ª Semana Acadêmica da UNINASSAU reúne estudantes, professores e profissionais em dias intensivos de conferências, mesas-redondas, oficinas práticas e apresentação de trabalhos acadêmicos, organizados em seis eixos temáticos.
+            O evento é um espaço privilegiado para dar visibilidade às atividades de extensão realizadas, além de outros trabalhos científicos. Seu propósito é estimular a produção de conhecimento, a formação de recursos humanos e a troca de experiências entre os alunos das diversas áreas dos cursos de graduação da unidade.
           </p>
 
           <ul class="feature-bullet-list">
-            <li>Credenciamento por QR Code único, com check-in rápido na entrada de cada sessão.</li>
-            <li>Certificado digital de 20 horas liberado mediante presença confirmada pelos monitores.</li>
-            <li>Oficinas práticas por área de conhecimento, com vagas limitadas.</li>
-            <li>Submissão e apresentação de trabalhos acadêmicos.</li>
+            <li>Trabalhos apresentados em Pôster/Banner ou Comunicação oral, com 10 minutos de duração.</li>
+            <li>Aceitamos relatos de experiência, resultados de pesquisa, trabalhos de conclusão de curso e outros, vinculados ou não à instituição.</li>
+            <li>Certificado de participação disponível nesse site após a validação.</li>
           </ul>
         </div>
 
         <div class="col-lg-6">
           <div class="bg-white p-3 border" style="border-color: var(--border-light) !important;">
-            <!-- [EDITAR MANUALMENTE]: Foto secundária da Seção 01 -->
-            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=80" alt="Atividades Acadêmicas" class="img-fluid w-100" style="max-height: 320px; object-fit: cover;" />
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=80" alt="Estudantes em atividade acadêmica" class="img-fluid w-100" style="max-height: 320px; object-fit: cover;" />
             <div class="p-3 bg-light border-top">
-              <span class="d-block small text-muted" style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;">CERTIFICAÇÃO OFICIAL</span>
-              <strong style="color: var(--uninassau-navy); font-size: 1.05rem;">Comprovante de 20 horas liberado após check-in presencial</strong>
+              <span class="d-block small text-muted" style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;">TEMA DA 6ª JORNADA</span>
+              <strong style="color: var(--uninassau-navy); font-size: 1.05rem;">Conhecimento que conecta pessoas e transforma realidades</strong>
             </div>
           </div>
 
@@ -165,17 +174,25 @@
             <div class="col-sm-6">
               <div class="meta-accent-box">
                 <div class="meta-label">QUANDO</div>
-                <!-- [EDITAR MANUALMENTE]: Data e horário de início -->
-                <div class="meta-value">8 a 11 de dezembro de 2026</div>
-                <div class="small text-muted">A partir das 07h30</div>
+                <div class="meta-value">09 e 10 de dezembro de 2026</div>
+                <div class="small text-muted">Sessões de manhã e à noite</div>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="meta-accent-box">
                 <div class="meta-label">ONDE</div>
-                <!-- [EDITAR MANUALMENTE]: Endereço ou Campus -->
-                <div class="meta-value">Campus UNINASSAU Teresina — PI</div>
-                <div class="small text-muted">Credenciamento no hall principal e salas</div>
+                <div class="meta-value">Uninassau Teresina — PI</div>
+                <div class="small text-muted">Credenciamento no local</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="meta-accent-box meta-social">
+                <div class="meta-label">REDE SOCIAL DO EVENTO</div>
+                <a class="meta-value d-inline-flex align-items-center gap-2 text-decoration-none" href="https://www.instagram.com/vi_jornadaacademicauninassau/" target="_blank" rel="noopener noreferrer">
+                  <svg class="ig-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                  @vi_jornadaacademicauninassau
+                </a>
+                <div class="small text-muted">Normas, novidades e a distribuição de horários das apresentações.</div>
               </div>
             </div>
           </div>
@@ -185,129 +202,229 @@
   </section>
 
   <!-- ========================================================================
-       SEÇÃO 02 — EIXOS TEMÁTICOS (FUNDO BRANCO PURO)
-       ======================================================================== -->
-  <section id="eixos" class="section-block bg-white-pure">
-    <div class="container">
-      <div class="row justify-content-between align-items-end">
-        <div class="col-lg-6">
-          <div class="section-index-header">
-            <span class="index-num">02</span>
-            <span class="index-line"></span>
-            <span>EIXOS TEMÁTICOS</span>
-          </div>
-          <h2 class="section-title mb-0">Seis trilhas, um só território de conhecimento.</h2>
-        </div>
-        <div class="col-lg-5 mt-3 mt-lg-0">
-          <p class="small text-muted mb-0">
-            Cada eixo reúne oficinas, mesas e trabalhos acadêmicos. A programação de cada trilha acontece em salas simultâneas.
-          </p>
-        </div>
-      </div>
-
-      <!-- [EDITAR MANUALMENTE]: Altere os títulos ou descrições dos 6 eixos se desejar -->
-      <div class="tracks-grid">
-        <div class="track-card">
-          <span class="track-number">01</span>
-          <h3 class="track-title">Saúde e Cuidado</h3>
-          <p class="track-desc">Práticas clínicas, saúde coletiva e o cuidado como compromisso com o território.</p>
-        </div>
-        <div class="track-card">
-          <span class="track-number">02</span>
-          <h3 class="track-title">Direito e Cidadania</h3>
-          <p class="track-desc">Direitos fundamentais, acesso à justiça e mediação de conflitos na vida real.</p>
-        </div>
-        <div class="track-card">
-          <span class="track-number">03</span>
-          <h3 class="track-title">Tecnologia e Dados</h3>
-          <p class="track-desc">Inteligência artificial, automação e o uso responsável de dados na pesquisa.</p>
-        </div>
-        <div class="track-card">
-          <span class="track-number">04</span>
-          <h3 class="track-title">Gestão e Negócios</h3>
-          <p class="track-desc">Empreendedorismo, mercado e gestão de organizações em cenários de mudança.</p>
-        </div>
-        <div class="track-card">
-          <span class="track-number">05</span>
-          <h3 class="track-title">Engenharias e Infraestrutura</h3>
-          <p class="track-desc">Projetos, cidade, energia e soluções de engenharia para o Piauí.</p>
-        </div>
-        <div class="track-card">
-          <span class="track-number">06</span>
-          <h3 class="track-title">Educação e Extensão</h3>
-          <p class="track-desc">Metodologias ativas, currículo e a extensão universitária como ponte comunitária.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       SEÇÃO 03 — PROGRAMAÇÃO DINÂMICA (CONECTADA AO SUPABASE)
+       SEÇÃO 02 — PROGRAMAÇÃO (conforme edital)
        ======================================================================== -->
   <section id="programacao" class="section-block">
     <div class="container">
-      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3">
-        <div>
-          <div class="section-index-header">
-            <span class="index-num">03</span>
-            <span class="index-line"></span>
-            <span>PROGRAMAÇÃO</span>
+      <div class="section-index-header">
+        <span class="index-num">02</span>
+        <span class="index-line"></span>
+        <span>PROGRAMAÇÃO</span>
+      </div>
+      <h2 class="section-title mb-0">Dois dias de apresentações de trabalhos.</h2>
+
+      <!-- 1º DIA -->
+      <div class="schedule-day-header">
+        <span class="day-badge">1º DIA</span>
+        <strong>09/12/2026 · quarta-feira</strong>
+      </div>
+      <div class="schedule-list schedule-list-day">
+        <div class="schedule-row">
+          <div class="schedule-time">8h30</div>
+          <div>
+            <div class="schedule-activity-title">Cerimônia de abertura</div>
+            <div class="schedule-activity-location">Uninassau Teresina</div>
           </div>
-          <h2 class="section-title mb-0">4 dias de programação, a partir das 07h30.</h2>
+          <div class="schedule-tag">ABERTURA</div>
+        </div>
+        <div class="schedule-row">
+          <div class="schedule-time">9h – 12h</div>
+          <div>
+            <div class="schedule-activity-title">Apresentações de trabalhos</div>
+            <div class="schedule-activity-location">Banner e Comunicação oral</div>
+          </div>
+          <div class="schedule-tag">TRABALHOS</div>
+        </div>
+        <div class="schedule-row">
+          <div class="schedule-time">18h30 – 21h30</div>
+          <div>
+            <div class="schedule-activity-title">Apresentações de trabalhos</div>
+            <div class="schedule-activity-location">Banner e Comunicação oral</div>
+          </div>
+          <div class="schedule-tag">TRABALHOS</div>
         </div>
       </div>
 
-      <!-- Lista populada automaticamente a partir da tabela 'eventos' do Supabase -->
-      <div id="grade-programacao-publica" class="schedule-list">
-        <div class="py-4 text-muted small">Carregando programação oficial do banco de dados...</div>
+      <!-- 2º DIA -->
+      <div class="schedule-day-header">
+        <span class="day-badge">2º DIA</span>
+        <strong>10/12/2026 · quinta-feira</strong>
+      </div>
+      <div class="schedule-list schedule-list-day">
+        <div class="schedule-row">
+          <div class="schedule-time">8h30 – 12h</div>
+          <div>
+            <div class="schedule-activity-title">Apresentações de trabalhos</div>
+            <div class="schedule-activity-location">Banner e Comunicação oral</div>
+          </div>
+          <div class="schedule-tag">TRABALHOS</div>
+        </div>
+        <div class="schedule-row">
+          <div class="schedule-time">18h – 20h</div>
+          <div>
+            <div class="schedule-activity-title">Apresentações de trabalhos</div>
+            <div class="schedule-activity-location">Banner e Comunicação oral</div>
+          </div>
+          <div class="schedule-tag">TRABALHOS</div>
+        </div>
+        <div class="schedule-row">
+          <div class="schedule-time">20h30</div>
+          <div>
+            <div class="schedule-activity-title">Encerramento e premiação dos trabalhos</div>
+            <div class="schedule-activity-location">Uninassau Teresina</div>
+          </div>
+          <div class="schedule-tag">PREMIAÇÃO</div>
+        </div>
+      </div>
+
+      <p class="schedule-note">
+        O dia e o horário de cada apresentação serão divulgados em <strong>05/12/2026</strong>, na rede social do evento.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SEÇÃO 03 — CRONOGRAMA (conforme edital)
+       data-inicio / data-fim alimentam o script que destaca a fase atual.
+       ======================================================================== -->
+  <section id="cronograma" class="section-block">
+    <div class="container">
+      <div class="row justify-content-between align-items-end">
+        <div class="col-lg-7">
+          <div class="section-index-header">
+            <span class="index-num">03</span>
+            <span class="index-line"></span>
+            <span>CRONOGRAMA</span>
+          </div>
+          <h2 class="section-title mb-0">Datas importantes para não perder nenhum prazo.</h2>
+        </div>
+        <div class="col-lg-4 mt-3 mt-lg-0">
+          <p class="small text-muted mb-0">Edital publicado em Teresina, em 13 de novembro de 2026, pela Comissão Organizadora.</p>
+        </div>
+      </div>
+
+      <div class="cron-grid">
+        <article class="cron-card" data-inicio="2026-11-13">
+          <span class="cron-status"></span>
+          <div class="cron-date">13</div>
+          <div class="cron-month">NOVEMBRO</div>
+          <h3 class="cron-title">Lançamento do edital</h3>
+        </article>
+
+        <article class="cron-card cron-card-key" data-inicio="2026-11-16" data-fim="2026-11-30">
+          <span class="cron-status"></span>
+          <div class="cron-date">16 a 30</div>
+          <div class="cron-month">NOVEMBRO</div>
+          <h3 class="cron-title">Período de inscrições</h3>
+          <p class="cron-desc">Inscreva seu trabalho pelo site, sem taxa.</p>
+        </article>
+
+        <article class="cron-card" data-inicio="2026-12-05">
+          <span class="cron-status"></span>
+          <div class="cron-date">05</div>
+          <div class="cron-month">DEZEMBRO</div>
+          <h3 class="cron-title">Divulgação dos trabalhos selecionados</h3>
+        </article>
+
+        <article class="cron-card" data-inicio="2026-12-05">
+          <span class="cron-status"></span>
+          <div class="cron-date">05</div>
+          <div class="cron-month">DEZEMBRO</div>
+          <h3 class="cron-title">Definição de dia e horário da apresentação</h3>
+          <p class="cron-desc">Divulgados nas redes sociais do evento.</p>
+        </article>
+
+        <article class="cron-card cron-card-main" data-inicio="2026-12-09" data-fim="2026-12-10">
+          <span class="cron-status"></span>
+          <div class="cron-date">09 e 10</div>
+          <div class="cron-month">DEZEMBRO</div>
+          <h3 class="cron-title">6ª Jornada Acadêmica</h3>
+          <p class="cron-desc">Uninassau Teresina — PI.</p>
+        </article>
+
+        <article class="cron-card" data-inicio="2026-12-14">
+          <span class="cron-status"></span>
+          <div class="cron-date">14</div>
+          <div class="cron-month">DEZEMBRO</div>
+          <h3 class="cron-title">Recebimento de certificados</h3>
+          <p class="cron-desc">Pelo site do evento, a partir desta data.</p>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- ========================================================================
-       SEÇÃO 04 — INSCRIÇÃO E EMISSÃO DO QR CODE ÚNICO
+       SEÇÃO 04 — DOAÇÃO DE ALIMENTOS (responsabilidade social)
+       ======================================================================== -->
+  <section id="doacao" class="section-block bg-white-pure">
+    <div class="container">
+      <div class="donation-panel">
+        <div class="donation-amount" aria-hidden="true">
+          <div class="donation-figure"><span class="donation-num">1</span><span class="donation-unit">kg</span></div>
+          <div class="donation-caption">DE ALIMENTO NÃO PERECÍVEL</div>
+        </div>
+        <div class="donation-body">
+          <div class="section-index-header">
+            <span class="index-num">04</span>
+            <span class="index-line"></span>
+            <span>RESPONSABILIDADE SOCIAL</span>
+          </div>
+          <h2 class="section-title">Traga 1 kg de alimento não perecível e ajude quem precisa.</h2>
+          <p>
+            Além de estimular a produção científica, a 6ª Jornada Acadêmica é uma oportunidade de exercer a responsabilidade social. Pedimos que cada aluno participante contribua com a doação de 1 kg de alimento não perecível.
+          </p>
+          <p class="mb-0">
+            A doação é recebida no momento do credenciamento e será entregue a uma instituição de trabalho social reconhecida.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SEÇÃO 05 — INSCRIÇÃO DO TRABALHO
+       (IDs do formulário preservados: o JS e o Supabase continuam funcionando)
        ======================================================================== -->
   <section id="inscricao" class="section-block">
     <div class="container">
       <div class="row g-5 align-items-start">
-        <!-- Coluna Esquerda: Orientações de Credenciamento + Link para Certificado -->
+        <!-- Coluna Esquerda: Regras do edital + Link para Certificado -->
         <div class="col-lg-5">
           <div class="section-index-header">
-            <span class="index-num">04</span>
+            <span class="index-num">05</span>
             <span class="index-line"></span>
             <span>INSCRIÇÃO</span>
           </div>
-          <h2 class="section-title">Garanta sua vaga nas sessões.</h2>
+          <h2 class="section-title">Garanta sua vaga no evento.</h2>
           <p>
-            O credenciamento é feito a partir das 07h30. A inscrição é gratuita e pode ser feita até o preenchimento das vagas.
+            A inscrição é gratuita e vai de <strong>16 a 30 de novembro</strong>. Cada trabalho deve ser inscrito apenas uma vez, por um representante do grupo.
           </p>
 
           <ul class="feature-bullet-list">
-            <li>O check-in é feito pela organização no credenciamento de cada sessão, com a leitura do seu QR Code.</li>
-            <li>Basta registrar presença em pelo menos 1 atividade para liberar seu certificado de 20 horas.</li>
+            <li>O check-in é feito pela organização no credenciamento de cada sessão, com a leitura do seu QR Code único.</li>
+            <li>Basta registrar presença em pelo menos 1 atividade para liberar seu certificado.</li>
             <li>Leve o QR Code recebido na inscrição (impresso ou no celular) e um documento oficial com foto.</li>
-            <li>A inscrição é individual e gratuita, sujeita à lotação das salas.</li>
+            <li>A inscrição é individual e gratuita.</li>
           </ul>
 
-          <!-- Caixa "JÁ SE INSCREVEU?" idêntica ao layout de referência apontando para consulta-certificado.html -->
           <div class="bg-white p-3 border mt-4" style="border-color: var(--border-light) !important;">
             <span class="d-block text-muted mb-1" style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;">
               JÁ SE INSCREVEU?
             </span>
             <p class="small mb-0">
-              Seu certificado fica disponível na área <a href="consulta-certificado.html" class="fw-bold text-decoration-underline" style="color: var(--uninassau-navy);">Certificados</a> após o evento.
+              O certificado de participação fica disponível na área <a href="certificado-js\web\consulta-certificado.html" class="fw-bold text-decoration-underline" style="color: var(--uninassau-navy);">Certificados</a>, a partir de 14/12, após a validação.
             </p>
           </div>
 
-          <!-- Card do Crachá Digital (Aparece automaticamente assim que o aluno se inscreve) -->
+          <!-- Card do Crachá Digital (Aparece automaticamente assim que a inscrição é concluída) -->
           <div id="card-cracha-aluno" class="form-card-editorial text-center mt-4 d-none" style="border-top: 4px solid var(--uninassau-yellow);">
-            <span class="badge bg-success mb-2">CREDENCIAIS GERADAS COM SUCESSO</span>
+            <span class="badge bg-success mb-2">INSCRIÇÃO REGISTRADA COM SUCESSO</span>
             <h3 id="cracha-nome" class="h5 fw-bold mb-1"></h3>
             <p class="small text-muted mb-3">
-              Enviamos este QR Code para o seu e-mail! Você também pode tirar print desta tela para apresentar ao monitor:
+              Enviamos este QR Code para o seu e-mail! Você também pode tirar print desta tela para apresentar à organização:
             </p>
             <div class="d-flex justify-content-center my-2">
-              <img id="img-qr-unico" src="" alt="QR Code Único do Aluno" class="img-fluid border p-2" style="max-width: 210px;" />
+              <img id="img-qr-unico" src="" alt="QR Code único da inscrição" class="img-fluid border p-2" style="max-width: 210px;" />
             </div>
             <code id="codigo-token-texto" class="small text-muted d-block mt-2"></code>
           </div>
@@ -321,17 +438,17 @@
             <form id="form-inscricao" novalidate>
               <div class="mb-3">
                 <label class="form-label" for="nome">NOME COMPLETO</label>
-                <input type="text" id="nome" class="form-control" placeholder="Como aparece no documento" required minlength="5" />
+                <input type="text" id="nome" class="form-control" placeholder="Como aparece no documento" autocomplete="name" required minlength="5" />
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label" for="email">E-MAIL</label>
-                  <input type="email" id="email" class="form-control" placeholder="seu@email.com" required />
+                  <input type="email" id="email" class="form-control" placeholder="seu@email.com" autocomplete="email" inputmode="email" required />
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label" for="telefone">TELEFONE</label>
-                  <input type="text" id="telefone" class="form-control" placeholder="(86) 99999-9999" required />
+                  <input type="text" id="telefone" class="form-control" placeholder="(86) 99999-9999" autocomplete="tel" inputmode="tel" required />
                 </div>
               </div>
 
@@ -395,7 +512,7 @@
             </form>
           </div>
           <div class="text-center mt-2" style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.08em;">
-            8 A 11 DE DEZEMBRO DE 2026 · CAMPUS UNINASSAU TERESINA — PI
+            09 E 10 DE DEZEMBRO DE 2026 · UNINASSAU TERESINA — PI
           </div>
         </div>
       </div>
@@ -403,72 +520,73 @@
   </section>
 
   <!-- ========================================================================
-       SEÇÃO 05 — PERGUNTAS FREQUENTES (DÚVIDAS)
+       SEÇÃO 06 — PERGUNTAS FREQUENTES (DÚVIDAS) — respostas baseadas no edital
        ======================================================================== -->
   <section id="duvidas" class="section-block">
     <div class="container">
       <div class="row g-5">
         <div class="col-lg-4">
           <div class="section-index-header">
-            <span class="index-num">05</span>
+            <span class="index-num">06</span>
             <span class="index-line"></span>
             <span>DÚVIDAS</span>
           </div>
           <h2 class="section-title">Perguntas frequentes</h2>
           <p class="small text-muted">
-            Se ficar alguma dúvida, procure a coordenação de extensão no campus.
+            Todas as normas e novidades da Jornada são divulgadas neste site e no Instagram
+            <a href="https://www.instagram.com/vi_jornadaacademicauninassau/" target="_blank" rel="noopener noreferrer" class="fw-bold">@vi_jornadaacademicauninassau</a>.
           </p>
         </div>
 
         <div class="col-lg-8">
           <div class="faq-list">
             <div class="faq-item">
-              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                <span>Quem pode participar?</span>
-                <span>⌄</span>
+              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                <span>Quem pode inscrever um trabalho?</span>
+                <span aria-hidden="true">⌄</span>
               </button>
               <div id="faq1" class="collapse show faq-answer">
-                Estudantes regularmente matriculados na UNINASSAU, docentes, pesquisadores e comunidade externa inscrita pelo site oficial.
+                Estudantes e profissionais de diversas áreas. A inscrição é obrigatória para os alunos das disciplinas de APIExt (I a VI). Outros trabalhos, vinculados ou não à instituição, também são aceitos: relatos de experiência, resultados de pesquisa, trabalhos de conclusão de curso, entre outros.
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                <span>Como funciona o certificado?</span>
-                <span>⌄</span>
+              <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                <span>Onde encontro meu QR Code de acesso?</span>
+                <span aria-hidden="true">⌄</span>
               </button>
               <div id="faq2" class="collapse faq-answer">
-                Basta ter pelo menos 1 presença confirmada pelo monitor de sala com o seu QR Code único para liberar o seu certificado institucional de 20 horas.
+                Assim que você confirma sua inscrição no formulário acima, seu QR Code único é enviado para o seu e-mail.
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                <span>Onde encontro meu QR Code de acesso?</span>
-                <span>⌄</span>
-              </button>
-              <div id="faq3" class="collapse faq-answer">
-                Assim que você confirma sua inscrição no formulário acima, seu QR Code único é exibido imediatamente na tela e também enviado para o seu e-mail.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                <span>E se eu esquecer o QR Code no dia?</span>
-                <span>⌄</span>
+              <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                <span>Como funciona a apresentação?</span>
+                <span aria-hidden="true">⌄</span>
               </button>
               <div id="faq4" class="collapse faq-answer">
-                O monitor de sala pode registrar sua presença manualmente informando o seu CPF mediante apresentação de um documento oficial com foto.
+                Cada apresentação, de banner ou oral, dura 10 minutos e é avaliada por pelo menos um professor ou profissional da área. Os banners precisam estar posicionados 30 minutos antes do turno (manhã até as 8h, noite até as 18h). Quem apresenta oralmente entrega o material 10 minutos antes da sessão e leva o próprio computador com saída HDMI.
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                <span>Como recebo ou baixo meu certificado?</span>
-                <span>⌄</span>
+              <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                <span>Quando saberei o dia e o horário da minha apresentação?</span>
+                <span aria-hidden="true">⌄</span>
               </button>
               <div id="faq5" class="collapse faq-answer">
-                Acesse a página <a href="consulta-certificado.html" class="fw-bold text-decoration-underline" style="color: var(--uninassau-navy);">Certificados</a> no menu superior, digite seu CPF e e-mail cadastrados para visualizar seu diploma na tela e baixar o PDF.
+                Em 05/12/2026, junto com a divulgação dos trabalhos selecionados, pela rede social do evento.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                <span>Como recebo meu certificado?</span>
+                <span aria-hidden="true">⌄</span>
+              </button>
+              <div id="faq6" class="collapse faq-answer">
+                A partir de 14/12, após a validação da participação, acesse a página <a href="certificado-js\web\consulta-certificado.html" class="fw-bold text-decoration-underline" style="color: var(--uninassau-navy);">Certificados</a>. Os dados do certificado são de responsabilidade de quem fez a inscrição.
               </div>
             </div>
           </div>
@@ -478,18 +596,17 @@
   </section>
 
   <!-- ========================================================================
-       SEÇÃO 06 — BANNER CTA PRÉ-RODAPÉ E RODAPÉ INSTITUCIONAL
+       BANNER CTA PRÉ-RODAPÉ E RODAPÉ INSTITUCIONAL
        ======================================================================== -->
   <section class="cta-banner-section">
     <div class="container">
       <div class="row align-items-center justify-content-between g-4">
         <div class="col-lg-7">
-          <div class="hero-eyebrow mb-2">VAGAS LIMITADAS</div>
-          <!-- [EDITAR MANUALMENTE]: Frase de impacto do banner final -->
+          <div class="hero-eyebrow mb-2">INSCRIÇÕES ATÉ 30 DE NOVEMBRO</div>
           <h2 class="text-white fw-bold mb-2" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">
-            A academia encontra o território em 8 a 11 de dezembro de 2026.
+            O conhecimento conecta pessoas em 09 e 10 de dezembro de 2026.
           </h2>
-          <p class="text-white-50 small mb-0">Campus UNINASSAU Teresina — PI · Credenciamento a partir das 07h30</p>
+          <p class="text-white-50 small mb-0">Uninassau Teresina — PI · Inscrição gratuita · Doe 1 kg de alimento não perecível</p>
         </div>
         <div class="col-lg-auto">
           <a href="#inscricao" class="btn-cta-yellow">INSCREVER AGORA</a>
@@ -501,31 +618,44 @@
   <footer class="footer-uninassau">
     <div class="container">
       <div class="row g-4 justify-content-between">
-        <div class="col-lg-5">
+        <div class="col-lg-4">
           <div class="small text-warning fw-bold mb-1" style="font-family: var(--font-mono);">6ª EDIÇÃO</div>
-          <h3 class="h4 text-white fw-bold mb-2">SEMANA ACADÊMICA UNINASSAU</h3>
+          <h3 class="h4 text-white fw-bold mb-2">JORNADA ACADÊMICA UNINASSAU TERESINA</h3>
           <p class="small text-white-50 mb-0" style="max-width: 360px;">
-            Ensino, pesquisa, extensão e inovação. Programação acadêmica em Teresina, Piauí.
+            Conhecimento que conecta pessoas e transforma realidades.
           </p>
         </div>
 
-        <div class="col-6 col-lg-3">
+        <div class="col-6 col-lg-2">
           <div class="footer-heading">NAVEGAÇÃO</div>
           <ul>
             <li><a href="#o-evento">O evento</a></li>
             <li><a href="#programacao">Programação</a></li>
+            <li><a href="#cronograma">Cronograma</a></li>
             <li><a href="#inscricao">Inscrição</a></li>
-            <li><a href="consulta-certificado.html">Certificados</a></li>
+            <li><a href="certificado-js\web\consulta-certificado.html">Certificados</a></li>
           </ul>
         </div>
 
         <div class="col-6 col-lg-3">
           <div class="footer-heading">ORGANIZAÇÃO</div>
           <ul>
-            <li>Coordenação de Extensão · UNINASSAU Teresina</li>
-            <li>Campus UNINASSAU Teresina — PI</li>
-            <li>8 a 11 de dezembro de 2026</li>
+            <li>Comissão Organizadora da 6ª Jornada Acadêmica da Uninassau</li>
+            <li>Uninassau Teresina — PI</li>
+            <li>09 e 10 de dezembro de 2026</li>
             <li class="mt-2"><a href="professor.html" class="text-warning text-decoration-underline">Painel da organização</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <div class="footer-heading">REDES SOCIAIS</div>
+          <ul>
+            <li>
+              <a class="d-inline-flex align-items-center gap-2" href="https://www.instagram.com/vi_jornadaacademicauninassau/" target="_blank" rel="noopener noreferrer">
+                <svg class="ig-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                @vi_jornadaacademicauninassau
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -546,6 +676,24 @@
   <script src="js/inscricao-blindada.js" defer></script>
 
   <script>
+    // 0. Destaca no cronograma a fase atual (EM ANDAMENTO) e as fases já concluídas
+    (function marcarFaseDoCronograma() {
+      const hoje = new Date();
+      hoje.setHours(0, 0, 0, 0);
+      document.querySelectorAll('.cron-card[data-inicio]').forEach((card) => {
+        const inicio = new Date(card.dataset.inicio + 'T00:00:00');
+        const fim = new Date((card.dataset.fim || card.dataset.inicio) + 'T00:00:00');
+        const etiqueta = card.querySelector('.cron-status');
+        if (hoje > fim) {
+          card.classList.add('is-past');
+          if (etiqueta) etiqueta.textContent = 'CONCLUÍDO';
+        } else if (hoje >= inicio) {
+          card.classList.add('is-now');
+          if (etiqueta) etiqueta.textContent = 'EM ANDAMENTO';
+        }
+      });
+    })();
+
     // 1. Aplica Máscaras nos Campos do Formulário
     IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
     IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
@@ -633,40 +781,19 @@
       alerta.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // 3. Carrega a Programação na Seção 03
+    // 3. Carrega do banco os IDs das atividades (enviados junto com a inscrição).
+    //    A programação pública agora é fixa no HTML, conforme o edital.
     async function carregarEventos() {
-      const containerGrade = document.getElementById('grade-programacao-publica');
-
       const { data: eventos, error } = await db
         .from('eventos')
-        .select('id, titulo, responsavel, data_evento, sala')
+        .select('id, data_evento')
         .order('data_evento', { ascending: true });
 
-      if (error || !eventos || eventos.length === 0) {
-        containerGrade.innerHTML = '<div class="py-3 text-muted small">Nenhuma atividade publicada no momento.</div>';
+      if (error || !eventos) {
+        console.error('Não foi possível carregar as atividades:', error);
         return;
       }
-
       idsEventosDisponiveis = eventos.map(ev => ev.id);
-
-      // Renderiza linhas da Seção 03 (Programação estilo Editorial)
-      containerGrade.innerHTML = eventos.map((ev, idx) => {
-        const dt = new Date(ev.data_evento);
-        const horaFmt = dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        const dataFmt = dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
-        const numOrdem = String(idx + 1).padStart(2, '0');
-        return `
-          <div class="schedule-row">
-            <div class="schedule-time">${horaFmt} <span class="d-block small text-muted fw-normal" style="font-size:0.7rem;">${dataFmt}</span></div>
-            <div>
-              <div class="schedule-activity-title">${ev.titulo}</div>
-              <div class="schedule-activity-location">Prof(a). ${ev.responsavel} · ${ev.sala ? 'Sala: ' + escapeHtml(ev.sala) : 'Sala a definir'}</div>
-            </div>
-            <div class="schedule-tag">ATIVIDADE OFICIAL</div>
-            <div class="schedule-tag text-end">${numOrdem}</div>
-          </div>
-        `;
-      }).join('');
     }
 
     // 4. Função de envio atualizada para EmailJS v4 com diagnóstico de erro na tela

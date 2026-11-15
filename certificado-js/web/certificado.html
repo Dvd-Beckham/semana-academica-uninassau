@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certificados - VI Jornada Acadêmica UNINASSAU</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; max-width: 760px; margin: auto; }
+    table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+    th, td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; }
+    .ok { color: #0a7d2c; font-weight: bold; }
+    .nao { color: #b00020; font-weight: bold; }
+    button { padding: 6px 12px; cursor: pointer; }
+    #msg { margin-top: 12px; color: #555; }
+  </style>
+</head>
+<body>
+  <h2>Certificados (teste)</h2>
+  <p>Lista simulando alunos. Só quem tem <b>pelo menos 1 presença</b> pode gerar o certificado.</p>
+  <button id="btnTodos">Gerar de todos os aprovados</button>
+  <div id="msg"></div>
+  <table>
+    <thead><tr><th>Nome</th><th>E-mail</th><th>Presenças</th><th>Situação</th><th></th></tr></thead>
+    <tbody id="lista"></tbody>
+  </table>
+
+  <script src="certificado.js"></script>
+  <script>
+    // Dados só de teste desta página. Na página real, quem fornece o aluno é buscarAluno(cpf, email).
+    function alunosDeTeste() {
+      return [
+        { id: 1, nome: "Ana Paula Ribeiro",                        email: "ana@teste.com",    presencas: 2 },
+        { id: 2, nome: "João Pedro Silva",                         email: "joao@teste.com",   presencas: 1 },
+        { id: 3, nome: "Carlos Eduardo Albuquerque de Sousa Neto", email: "carlos@teste.com", presencas: 3 },
+        { id: 4, nome: "Maria Clara Lima",                         email: "maria@teste.com",  presencas: 0 }
+      ];
+    }
+
+    function iniciar() {
+      const alunos = alunosDeTeste();
+      const tbody = document.getElementById("lista");
+      alunos.forEach(aluno => {
+        const ok = aprovado(aluno);
+        const tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td></td><td></td><td>" + aluno.presencas + "</td>" +
+          "<td class='" + (ok ? "ok" : "nao") + "'>" + (ok ? "Aprovado" : "Sem presença") + "</td><td></td>";
+        tr.children[0].textContent = aluno.nome;   // textContent evita injetar HTML
+        tr.children[1].textContent = aluno.email;
+        const btn = document.createElement("button");
+        btn.textContent = "Gerar PDF";
+        btn.disabled = !ok;
+        btn.addEventListener("click", () => gerarCertificado(aluno).catch(e => alert(e.message)));
+        tr.children[4].appendChild(btn);
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("btnTodos").addEventListener("click", async () => {
+        const msg = document.getElementById("msg");
+        const lista = alunos.filter(aprovado);
+        try {
+          for (let i = 0; i < lista.length; i++) {
+            msg.textContent = "Gerando " + (i + 1) + " de " + lista.length + "...";
+            await gerarCertificado(lista[i]);
+          }
+          msg.textContent = lista.length + " certificado(s) gerado(s).";
+        } catch (e) { msg.textContent = e.message; }
+      });
+    }
+    iniciar();
+  </script>
+</body>
+</html>
