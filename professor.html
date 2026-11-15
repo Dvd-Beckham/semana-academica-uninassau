@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel da Organização & Monitores — UNINASSAU</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- [EDITAR MANUALMENTE]: Mantém compatibilidade caso o style.css esteja na raiz ou na pasta /css -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="assets/img/favicon.png?v=1" />
@@ -26,7 +25,6 @@
   <nav class="navbar navbar-uninassau">
     <div class="container d-flex justify-content-between align-items-center">
       <a class="navbar-brand" href="index.html">
-        <!-- [EDITAR MANUALMENTE]: Caminho da logo oficial -->
         <img src="assets/img/logo-jornada-nav.png" alt="Logo UNINASSAU" />
         <div>
           CREDENCIAMENTO & MONITORIA
@@ -85,12 +83,9 @@
             </div>
 
             <label class="form-label" for="select-evento-sala">SELECIONE A ATIVIDADE DESTA SALA</label>
-            <div class="input-group mb-3">
-              <select id="select-evento-sala" class="form-select fw-bold">
-                <option value="">Carregando atividades...</option>
-              </select>
-              <button type="button" id="btn-apagar-atividade" class="btn btn-outline-danger" title="Apagar a atividade selecionada">🗑️ Apagar</button>
-            </div>
+            <select id="select-evento-sala" class="form-select fw-bold mb-3">
+              <option value="">Carregando atividades...</option>
+            </select>
 
             <div id="alerta-leitura" class="alert d-none small" role="alert"></div>
 
@@ -107,11 +102,18 @@
               </div>
             </div>
 
-            <!-- Contingência Manual -->
+            <!-- Contingência Manual (CPF com máscara adaptativa + Token UUID) -->
             <form id="form-checkin-manual" class="mt-3">
               <label class="form-label" for="input-codigo-manual">CONTINGÊNCIA (DIGITE O CPF OU COLE O TOKEN DO ALUNO)</label>
               <div class="input-group">
-                <input type="text" id="input-codigo-manual" class="form-control" placeholder="000.000.000-00 ou Token UUID" required />
+                <input
+                  type="text"
+                  id="input-codigo-manual"
+                  class="form-control"
+                  autocomplete="off"
+                  placeholder="000.000.000-00 ou Token UUID"
+                  required
+                />
                 <button type="submit" class="btn-cta-yellow">VALIDAR ENTRADA</button>
               </div>
             </form>
@@ -153,54 +155,17 @@
                 <label class="form-label" for="sala_evento">SALA (OPCIONAL)</label>
                 <input type="text" id="sala_evento" class="form-control" maxlength="60" list="opcoes-salas" placeholder="Ex: Sala 204 ou Auditório" autocomplete="off" />
                 <datalist id="opcoes-salas"></datalist>
-                <div class="form-text">Aparece na programação do site para os alunos. Pode ser alterada depois.</div>
+                <div class="form-text">Aparece na programação do site para os alunos.</div>
               </div>
               <button type="submit" id="btn-criar-evento" class="btn-submit-navy">
                 PUBLICAR NA PROGRAMAÇÃO
               </button>
             </form>
           </div>
-
-          <!-- Edição da sala de cada atividade (informação exibida na programação do site) -->
-          <div class="form-card-editorial mt-4">
-            <div class="section-index-header">
-              <span class="index-num">03</span>
-              <span class="index-line"></span>
-              <span>SALA DAS ATIVIDADES</span>
-            </div>
-            <h2 class="h5 fw-bold mb-1">Editar Sala</h2>
-            <p class="small text-muted mb-3">Informe onde cada atividade acontece. A sala aparece na programação do site para os alunos.</p>
-            <div id="lista-salas" style="max-height: 420px; overflow-y: auto;">
-              <div class="text-muted small">Carregando atividades...</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </main>
-
-  <!-- Modal: confirmar exclusão de atividade -->
-  <div class="modal fade" id="modal-apagar" tabindex="-1" aria-labelledby="titulo-modal-apagar" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title h5 fw-bold" id="titulo-modal-apagar">⚠️ Apagar atividade</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-        </div>
-        <div class="modal-body">
-          <p class="fw-semibold mb-2">Tem certeza que deseja deletar essa atividade?</p>
-          <p class="mb-2"><strong id="nome-atividade-apagar"></strong></p>
-          <div class="alert alert-warning small mb-0">
-            Esta ação não pode ser desfeita. As inscrições e as presenças já registradas nesta atividade também serão apagadas.
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" id="btn-confirmar-apagar" class="btn btn-danger">Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Modal: atividades (arquivos) enviadas na inscrição -->
   <div class="modal fade" id="modal-trabalhos" tabindex="-1" aria-labelledby="titulo-modal-trabalhos" aria-hidden="true">
@@ -224,11 +189,14 @@
   <script src="js/supabaseClient.js"></script>
 
   <script>
-    // [EDITAR MANUALMENTE]: nome do bucket do Supabase Storage onde os trabalhos são guardados
     const STORAGE_BUCKET = 'trabalhos';
 
     let html5QrScanner = null;
     let bloqueioLeituraContinua = false;
+
+    function escapeHtml(t) {
+      return String(t ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
 
     function extrairTokenLimpo(textoLido) {
       try {
@@ -270,7 +238,7 @@
         const alerta = document.getElementById('alerta-bloqueio-oauth');
         alerta.innerHTML = `
           <strong>🚫 Acesso Restrito!</strong><br/>
-          A conta <strong>${session.user.email}</strong> não possui privilégios de Monitor ou Professor.<br/>
+          A conta <strong>${escapeHtml(session.user.email)}</strong> não possui privilégios de Monitor ou Professor.<br/>
           <small>Os alunos devem apresentar o QR Code diretamente ao monitor de sala.</small>
         `;
         alerta.classList.remove('d-none');
@@ -297,7 +265,7 @@
       }
     }
 
-    // 3. Carrega Atividades no Select
+    // 3. Carrega Atividades no Select e alimenta sugestões de sala para novos cadastros
     async function carregarSelectAtividades() {
       const select = document.getElementById('select-evento-sala');
       const { data: eventos } = await db
@@ -305,7 +273,8 @@
         .select('id, titulo, responsavel, data_evento, sala')
         .order('data_evento', { ascending: true });
 
-      renderizarSalas(eventos);
+      const salasUsadas = [...new Set((eventos || []).map(ev => (ev.sala || '').trim()).filter(Boolean))];
+      document.getElementById('opcoes-salas').innerHTML = salasUsadas.map(s => `<option value="${escapeHtml(s)}"></option>`).join('');
 
       if (!eventos || eventos.length === 0) {
         select.innerHTML = '<option value="">Nenhuma atividade cadastrada</option>';
@@ -318,7 +287,7 @@
       select.innerHTML = eventos.map(ev => {
         const dataFmt = new Date(ev.data_evento).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
         const selected = (ev.id === salaSalva) ? 'selected' : '';
-        return `<option value="${ev.id}" ${selected}>${ev.titulo} (${dataFmt})</option>`;
+        return `<option value="${ev.id}" ${selected}>${escapeHtml(ev.titulo)} (${dataFmt})</option>`;
       }).join('');
 
       atualizarListaPresentes();
@@ -329,74 +298,7 @@
       atualizarListaPresentes();
     });
 
-    // 3.1 Edição da sala de cada atividade
-    function escapeHtml(t) {
-      return String(t ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-    }
-
-    function renderizarSalas(eventos) {
-      const box = document.getElementById('lista-salas');
-      if (!eventos || eventos.length === 0) {
-        box.innerHTML = '<div class="text-muted small">Nenhuma atividade cadastrada.</div>';
-        return;
-      }
-      // Sugestões de salas já usadas (campo de cadastro e de edição)
-      const salasUsadas = [...new Set(eventos.map(ev => (ev.sala || '').trim()).filter(Boolean))];
-      document.getElementById('opcoes-salas').innerHTML = salasUsadas.map(s => `<option value="${escapeHtml(s)}"></option>`).join('');
-
-      box.innerHTML = eventos.map(ev => {
-        const dataFmt = new Date(ev.data_evento).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
-        return `
-          <div class="border-bottom py-2 linha-sala" data-evento-id="${escapeHtml(ev.id)}">
-            <div class="small fw-bold" style="color: var(--uninassau-navy);">${escapeHtml(ev.titulo)}</div>
-            <div class="text-muted" style="font-size: 0.75rem;">${dataFmt}</div>
-            <div class="input-group input-group-sm mt-1">
-              <input type="text" class="form-control input-sala" maxlength="60" list="opcoes-salas" autocomplete="off" placeholder="Ex: Sala 204 ou Auditório" value="${escapeHtml(ev.sala || '')}" />
-              <button type="button" class="btn btn-outline-primary btn-salvar-sala">Salvar</button>
-            </div>
-            <div class="small mt-1 feedback-sala"></div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    async function salvarSala(linha) {
-      const eventoId = linha.dataset.eventoId;
-      const sala = linha.querySelector('.input-sala').value.trim();
-      const feedback = linha.querySelector('.feedback-sala');
-      const botao = linha.querySelector('.btn-salvar-sala');
-
-      botao.disabled = true;
-      feedback.className = 'small mt-1 feedback-sala text-muted';
-      feedback.textContent = 'Salvando...';
-
-      const { data: res, error } = await db.rpc('atualizar_sala_evento', {
-        p_evento_id: eventoId,
-        p_sala: sala
-      });
-
-      botao.disabled = false;
-      if (error || !res?.sucesso) {
-        feedback.className = 'small mt-1 feedback-sala text-danger';
-        feedback.textContent = '❌ ' + (res?.erro || error?.message || 'Não foi possível salvar.');
-        return;
-      }
-      feedback.className = 'small mt-1 feedback-sala text-success';
-      feedback.textContent = sala ? '✅ Sala salva.' : '✅ Sala removida (aparecerá como "a definir").';
-    }
-
-    document.getElementById('lista-salas').addEventListener('click', (e) => {
-      const botao = e.target.closest('.btn-salvar-sala');
-      if (botao) salvarSala(botao.closest('.linha-sala'));
-    });
-    document.getElementById('lista-salas').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && e.target.classList.contains('input-sala')) {
-        e.preventDefault();
-        salvarSala(e.target.closest('.linha-sala'));
-      }
-    });
-
-    // 4. Registra Check-in do Aluno
+    // 4. Registra Check-in do Aluno (aceita Token UUID ou CPF)
     async function processarLeituraMonitor(codigoBruto) {
       const eventoId = document.getElementById('select-evento-sala').value;
       if (!eventoId) return exibirFeedbackMonitor('Selecione primeiro uma atividade acima!', 'warning');
@@ -444,15 +346,73 @@
       document.getElementById('btn-iniciar-camera').classList.remove('d-none');
     });
 
-    // 6. Contingência Manual
-    document.getElementById('form-checkin-manual').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const input = document.getElementById('input-codigo-manual');
-      await processarLeituraMonitor(input.value);
-      input.value = '';
+    // 6. Contingência Manual (Máscara adaptativa para CPF + suporte a Token UUID)
+    const inputCodigoManual = document.getElementById('input-codigo-manual');
+
+    function formatarCpfProgressivo(digitos) {
+      if (digitos.length <= 3) return digitos;
+      if (digitos.length <= 6) return `${digitos.slice(0, 3)}.${digitos.slice(3)}`;
+      if (digitos.length <= 9) return `${digitos.slice(0, 3)}.${digitos.slice(3, 6)}.${digitos.slice(6)}`;
+      return `${digitos.slice(0, 3)}.${digitos.slice(3, 6)}.${digitos.slice(6, 9)}-${digitos.slice(9, 11)}`;
+    }
+
+    function validarDigitosCpf(cpfFormatado) {
+      const d = cpfFormatado.replace(/\D/g, '');
+      if (d.length !== 11 || /^(\d)\1{10}$/.test(d)) return false;
+      for (const t of [9, 10]) {
+        let soma = 0;
+        for (let i = 0; i < t; i++) soma += Number(d[i]) * (t + 1 - i);
+        if (((soma * 10) % 11) % 10 !== Number(d[t])) return false;
+      }
+      return true;
+    }
+
+    inputCodigoManual.addEventListener('input', () => {
+      const valor = inputCodigoManual.value;
+      const digitos = valor.replace(/\D/g, '');
+
+      // Se contiver letras (Token UUID), URL ou mais de 11 dígitos, não aplica máscara de CPF
+      if (/[a-zA-Z]/.test(valor) || valor.includes('http') || digitos.length > 11) {
+        if (/^[0-9.-]+[a-zA-Z]/.test(valor) && valor.includes('.')) {
+          inputCodigoManual.value = valor.replace(/\./g, '');
+        }
+        return;
+      }
+
+      const posOriginal = inputCodigoManual.selectionStart ?? valor.length;
+      const digitosAntesCursor = valor.slice(0, posOriginal).replace(/\D/g, '').length;
+      const formatado = formatarCpfProgressivo(digitos.slice(0, 11));
+
+      if (formatado !== valor) {
+        inputCodigoManual.value = formatado;
+
+        let novaPos = 0;
+        let contados = 0;
+        while (novaPos < formatado.length && contados < digitosAntesCursor) {
+          if (/\d/.test(formatado[novaPos])) contados++;
+          novaPos++;
+        }
+        inputCodigoManual.setSelectionRange(novaPos, novaPos);
+      }
     });
 
-    // 7. Cadastrar Nova Atividade
+    document.getElementById('form-checkin-manual').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const valorDigitado = inputCodigoManual.value.trim();
+      if (!valorDigitado) return;
+
+      const ehTentativaCpf = !/[a-zA-Z]/.test(valorDigitado) && !valorDigitado.includes('http');
+      if (ehTentativaCpf && !validarDigitosCpf(valorDigitado)) {
+        exibirFeedbackMonitor('⚠️ CPF inválido ou incompleto. Digite os 11 números.', 'warning');
+        inputCodigoManual.focus();
+        return;
+      }
+
+      await processarLeituraMonitor(valorDigitado);
+      inputCodigoManual.value = '';
+    });
+
+    // 7. Cadastrar Nova Atividade (com campo opcional de sala)
     document.getElementById('form-evento').addEventListener('submit', async (e) => {
       e.preventDefault();
       const titulo = document.getElementById('titulo').value.trim();
@@ -497,49 +457,18 @@
       badge.textContent = `${presencas.length} confirmado(s)`;
       ul.innerHTML = presencas.map(p => `
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span><strong style="color: var(--uninassau-navy);">${p.nome}</strong> (${p.matricula_parcial || 'sem matrícula'}) — <small class="text-muted">${p.curso || 'sem curso'}</small></span>
+          <span><strong style="color: var(--uninassau-navy);">${escapeHtml(p.nome)}</strong> (${escapeHtml(p.matricula_parcial || 'sem matrícula')}) — <small class="text-muted">${escapeHtml(p.curso || 'sem curso')}</small></span>
           <span class="badge bg-success">Elegível 20h</span>
         </li>
       `).join('');
     }
 
-    // 9. Apagar atividade (com confirmação)
-    const modalApagar = new bootstrap.Modal(document.getElementById('modal-apagar'));
-
-    document.getElementById('btn-apagar-atividade').addEventListener('click', () => {
-      const select = document.getElementById('select-evento-sala');
-      if (!select.value) return exibirFeedbackMonitor('Selecione uma atividade para apagar.', 'warning');
-      document.getElementById('nome-atividade-apagar').textContent = select.options[select.selectedIndex].text;
-      modalApagar.show();
-    });
-
-    document.getElementById('btn-confirmar-apagar').addEventListener('click', async () => {
-      const select = document.getElementById('select-evento-sala');
-      const eventoId = select.value;
-      const botao = document.getElementById('btn-confirmar-apagar');
-      if (!eventoId) return;
-
-      botao.disabled = true;
-      const { data: res, error } = await db.rpc('apagar_evento_docente', { p_evento_id: eventoId });
-      botao.disabled = false;
-      modalApagar.hide();
-
-      if (error || !res?.sucesso) {
-        exibirFeedbackMonitor('❌ ' + (res?.erro || error?.message || 'Não foi possível apagar a atividade.'), 'danger');
-        return;
-      }
-
-      if (sessionStorage.getItem('uninassau_sala_monitor') === eventoId) sessionStorage.removeItem('uninassau_sala_monitor');
-      await carregarSelectAtividades();
-      exibirFeedbackMonitor('🗑️ Atividade apagada com sucesso.', 'success');
-    });
-
-    // 10. Atividades enviadas (arquivos dos apresentadores)
+    // 9. Atividades enviadas (arquivos dos apresentadores)
     const modalTrabalhos = new bootstrap.Modal(document.getElementById('modal-trabalhos'));
 
     function nomeOriginalDoArquivo(caminho) {
       const arquivo = String(caminho).split('/').pop() || '';
-      return arquivo.replace(/^\d+_/, '');  // remove o prefixo de data usado no envio
+      return arquivo.replace(/^\d+_/, '');
     }
 
     async function carregarTrabalhos() {
