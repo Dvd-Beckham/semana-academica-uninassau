@@ -54,6 +54,7 @@ const MENSAGENS = {
   DADOS_NAO_CONFEREM: 'Não encontramos uma inscrição com esse CPF e e-mail.',
   SEM_CHECKIN: 'Sua inscrição foi encontrada, mas ainda não há presença registrada.',
   ERRO_DE_CONSULTA: 'Não foi possível consultar agora. Tente novamente em instantes.',
+  FORA_DO_PRAZO: 'O certificado estará disponível a partir de 14 de dezembro.',
 };
 
 // Uso com o módulo do PDF:
