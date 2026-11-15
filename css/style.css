@@ -744,14 +744,10 @@ code { color: var(--uninassau-navy-soft); }
 #select-evento-sala { border-left: 4px solid var(--uninassau-yellow); }
 
 /* ==========================================================================
-   13. LAYOUT DA LANDING PAGE (index.html) — VERSÃO 2
-   Mesma identidade (azul/amarelo, cantos retos, tipografia editorial),
-   nova composição: foto da capa sangrando à direita com corte diagonal,
-   eixos em fundo azul, programação em linha do tempo, inscrição com
-   painel azul lateral e FAQ em cartões.
+   13. LAYOUT DA LANDING PAGE (index.html)
    ========================================================================== */
 
-/* ---------- Navbar: links em caixa-alta, mais compacta ---------- */
+/* ---------- Navbar ---------- */
 .navbar-uninassau .nav-link {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1005,11 +1001,11 @@ code { color: var(--uninassau-navy-soft); }
   background: repeating-linear-gradient(-45deg, var(--uninassau-yellow) 0 14px, var(--uninassau-navy-dark) 14px 28px);
 }
 
-/* ==========================================================================
-   14. AJUSTES DA VI JORNADA (edital 2026)
-   ========================================================================== */
+/* ==========================
+   14. AJUSTES DA VI JORNADA
+   ========================== */
 
-/* ---------- Navbar: menu recolhido até 1199px (7 itens não cabem em lg) ---------- */
+/* ---------- Navbar ---------- */
 @media (max-width: 1199.98px) {
   .navbar-uninassau.navbar-expand-xl .navbar-collapse { padding: 0.75rem 0 0.5rem; }
   .navbar-uninassau.navbar-expand-xl .nav-link { font-size: 0.8rem; padding: 0.7rem 0.25rem !important; }
@@ -1237,8 +1233,7 @@ code { color: var(--uninassau-navy-soft); }
   .hero-stats-grid { margin-top: 1.5rem; }
 }
 
-/* Rótulos dos indicadores um pouco mais compactos: "FORMATOS: BANNER E ORAL" cabe em uma linha
-   e as caixinhas mantêm a mesma altura (em telas muito estreitas o texto pode quebrar). */
+/* Rótulos dos indicadores um pouco mais compactos */
 .hero-stat-label { font-size: 0.6rem; letter-spacing: 0.05em; }
 .hero-stat-item,
 .hero-stat-item:first-child { padding-left: 0.75rem; padding-right: 0.75rem; }
