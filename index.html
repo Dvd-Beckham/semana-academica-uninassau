@@ -63,7 +63,7 @@
             <span class="highlight-yellow">UNINASSAU TERESINA</span>
           </h1>
 
-          <!-- Tema oficial da Jornada (edital) -->
+          <!-- Tema oficial da Jornada -->
           <p class="hero-theme">“Conhecimento que conecta pessoas e transforma realidades”</p>
 
           <p class="hero-description">
@@ -83,7 +83,7 @@
             <span>Acompanhe as novidades: <strong>@vi_jornadaacademicauninassau</strong></span>
           </a>
 
-          <!-- Quadro de Destaques (4 Colunas) -->
+          <!-- Quadro de Destaques -->
           <div class="hero-stats-grid">
             <div class="hero-stat-item">
               <div class="hero-stat-value">2</div>
@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <!-- Faixa inferior com os avisos principais (substitui a antiga faixa de eixos) -->
+    <!-- Faixa inferior com os avisos principais -->
     <div class="hero-ticker-bar">
       <ul class="hero-ticker-list">
         <li>09 E 10 DE DEZEMBRO DE 2026</li>
@@ -129,9 +129,9 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       SEÇÃO 01 — O EVENTO (informações introdutórias do edital)
-       ======================================================================== -->
+  <!-- ======================
+       SEÇÃO 01 — O EVENTO
+       ====================== -->
   <section id="o-evento" class="section-block">
     <div class="container">
       <div class="row align-items-center g-5">
@@ -201,9 +201,9 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       SEÇÃO 02 — PROGRAMAÇÃO (conforme edital)
-       ======================================================================== -->
+  <!-- =======================
+       SEÇÃO 02 — PROGRAMAÇÃO
+       ======================= -->
   <section id="programacao" class="section-block">
     <div class="container">
       <div class="section-index-header">
@@ -283,10 +283,9 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       SEÇÃO 03 — CRONOGRAMA (conforme edital)
-       data-inicio / data-fim alimentam o script que destaca a fase atual.
-       ======================================================================== -->
+  <!-- ======================
+       SEÇÃO 03 — CRONOGRAMA
+       ====================== -->
   <section id="cronograma" class="section-block">
     <div class="container">
       <div class="row justify-content-between align-items-end">
@@ -353,9 +352,9 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       SEÇÃO 04 — DOAÇÃO DE ALIMENTOS (responsabilidade social)
-       ======================================================================== -->
+  <!-- ===============================
+       SEÇÃO 04 — DOAÇÃO DE ALIMENTOS
+       =============================== -->
   <section id="doacao" class="section-block bg-white-pure">
     <div class="container">
       <div class="donation-panel">
@@ -381,10 +380,9 @@
     </div>
   </section>
 
-  <!-- ========================================================================
+  <!-- =================================
        SEÇÃO 05 — INSCRIÇÃO DO TRABALHO
-       (IDs do formulário preservados: o JS e o Supabase continuam funcionando)
-       ======================================================================== -->
+       ================================= -->
   <section id="inscricao" class="section-block">
     <div class="container">
       <div class="row g-5 align-items-start">
@@ -416,7 +414,7 @@
             </p>
           </div>
 
-          <!-- Card do Crachá Digital (Aparece automaticamente assim que a inscrição é concluída) -->
+          <!-- Card do Crachá Digital -->
           <div id="card-cracha-aluno" class="form-card-editorial text-center mt-4 d-none" style="border-top: 4px solid var(--uninassau-yellow);">
             <span class="badge bg-success mb-2">INSCRIÇÃO REGISTRADA COM SUCESSO</span>
             <h3 id="cracha-nome" class="h5 fw-bold mb-1"></h3>
@@ -457,7 +455,7 @@
                 <input type="text" id="cpf" class="form-control" placeholder="000.000.000-00" required />
               </div>
 
-              <!-- Papéis de participação: as duas caixas podem ficar marcadas ao mesmo tempo -->
+              <!-- Papéis de participação -->
               <div class="mb-3">
                 <label class="form-label d-block">COMO VOCÊ VAI PARTICIPAR?</label>
                 <div class="d-flex flex-wrap gap-3">
@@ -480,7 +478,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label" for="curso">CURSO</label>
-                  <!-- [EDITAR MANUALMENTE]: Adicione ou remova opções de cursos da UNINASSAU abaixo -->
+                  <!-- Adicione ou remova opções de cursos da UNINASSAU -->
                   <select id="curso" class="form-select" disabled>
                     <option value="">Selecione seu curso</option>
                     <option value="Ciência da Computação">Ciência da Computação</option>
@@ -519,9 +517,9 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       SEÇÃO 06 — PERGUNTAS FREQUENTES (DÚVIDAS) — respostas baseadas no edital
-       ======================================================================== -->
+  <!-- ==========================================
+       SEÇÃO 06 — PERGUNTAS FREQUENTES (DÚVIDAS)
+       ========================================== -->
   <section id="duvidas" class="section-block">
     <div class="container">
       <div class="row g-5">
@@ -595,9 +593,9 @@
     </div>
   </section>
 
-  <!-- ========================================================================
+  <!-- =============================================
        BANNER CTA PRÉ-RODAPÉ E RODAPÉ INSTITUCIONAL
-       ======================================================================== -->
+       ============================================= -->
   <section class="cta-banner-section">
     <div class="container">
       <div class="row align-items-center justify-content-between g-4">
@@ -699,7 +697,7 @@
     IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
     const maskMatricula = IMask(document.getElementById('matricula'), { mask: '0000000000' });
 
-    // [EDITAR MANUALMENTE]: nome do bucket criado no Supabase Storage e tamanho máximo do arquivo
+    // nome do bucket criado no Supabase Storage e tamanho máximo do arquivo
     const STORAGE_BUCKET = 'trabalhos';
     const TAMANHO_MAX_MB = 10;
 
@@ -782,7 +780,6 @@
     }
 
     // 3. Carrega do banco os IDs das atividades (enviados junto com a inscrição).
-    //    A programação pública agora é fixa no HTML, conforme o edital.
     async function carregarEventos() {
       const { data: eventos, error } = await db
         .from('eventos')
@@ -796,7 +793,7 @@
       idsEventosDisponiveis = eventos.map(ev => ev.id);
     }
 
-    // 4. Função de envio atualizada para EmailJS v4 com diagnóstico de erro na tela
+    // 4. Função de envio para EmailJS v4 com diagnóstico de erro na tela
     async function enviarEmailComQRCode(nome, email, qrUrlImagem, qrToken) {
       const EMAILJS_PUBLIC_KEY = 'D5JE-mFhl2ABM90KV';
       const EMAILJS_SERVICE_ID = 'service_gpcqppr';
@@ -839,7 +836,7 @@
       const telefone = document.getElementById('telefone').value.trim();
       const ehAluno = chkAluno.checked;
       const ehApresentador = chkApresentador.checked;
-      const matricula = ehAluno ? inputMatricula.value.trim() : null;  // null (e não '') porque matrícula é única no banco
+      const matricula = ehAluno ? inputMatricula.value.trim() : null;
       const curso = ehAluno ? selectCurso.value : null;
       const arquivo = ehApresentador ? (inputArquivo.files[0] || null) : null;
 
