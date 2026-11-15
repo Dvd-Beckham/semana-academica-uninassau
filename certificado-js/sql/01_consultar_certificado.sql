@@ -10,6 +10,12 @@ declare
   v_aluno alunos%rowtype;
   v_presencas integer;
 begin
+
+  if now() < timestamptz '2026-12-14 00:00:00-03' then
+    return query select false, null::text, 0, 'FORA_DO_PRAZO'::text;
+    return;
+  end if;
+
   -- Compara CPF só com dígitos e e-mail em minúsculas (funciona mesmo que o cadastro varie)
   select * into v_aluno
   from alunos
