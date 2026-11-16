@@ -37,17 +37,16 @@ async function buscarAluno(cpf, email) {
     });
     if (!resp.ok) return { ok: false, motivo: 'ERRO_DE_CONSULTA' };
 
-    const linhas = await resp.json();   // a função devolve uma lista com uma linha
+    const linhas = await resp.json();
     const r = linhas && linhas[0];
     if (!r || r.ok !== true) return { ok: false, motivo: (r && r.motivo) || 'ERRO_DE_CONSULTA' };
 
     return { ok: true, aluno: { nome: r.nome, presencas: r.presencas } };
   } catch (erro) {
-    return { ok: false, motivo: 'ERRO_DE_CONSULTA' };   // erro nunca libera
+    return { ok: false, motivo: 'ERRO_DE_CONSULTA' };
   }
 }
 
-// Textos sugeridos para a tela
 const MENSAGENS = {
   CPF_INVALIDO: 'CPF inválido. Confira os números digitados.',
   EMAIL_INVALIDO: 'E-mail inválido. Confira o endereço digitado.',
